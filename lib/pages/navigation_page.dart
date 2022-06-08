@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:papers/pages/first_page.dart';
 import 'package:papers/providers/page_count_provider.dart';
 import 'package:provider/provider.dart';
 
 class NavigationPage extends StatelessWidget {
-  final List<Widget> _children = const [
-    Text(
-      'first',
-      style: TextStyle(fontFamily: 'Comfortaa'),
-    ),
-    Text(
+  final List<Widget> _children = [
+    FirstPage(),
+    const Text(
       'home',
       style: TextStyle(fontFamily: 'Comfortaa'),
     ),
-    Text(
+    const Text(
       'search',
       style: TextStyle(fontFamily: 'Comfortaa'),
     )
@@ -44,15 +42,15 @@ class NavigationPage extends StatelessWidget {
                 Icons.filter_none,
                 size: 18,
               ),
-              label: 'Mission',
+              label: 'first',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
-              label: 'MyPage',
+              label: 'home',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.search),
-              label: 'Settings',
+              label: 'search',
             ),
           ],
         ),
