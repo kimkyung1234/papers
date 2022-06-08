@@ -6,10 +6,12 @@ import 'package:papers/widgets/common/custom_text.dart';
 import 'package:papers/widgets/common/indicator_widget.dart';
 
 class RandomCardWidget extends StatelessWidget {
+  PhotoApiHelper photoApiHelper = PhotoApiHelper();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Photo>(
-      future: getRandomPhoto(),
+      future: photoApiHelper.getRandomPhoto(),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return circularIndicatorWidget(height: 500);
