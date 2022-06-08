@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:papers/pages/first_page.dart';
+import 'package:papers/pages/home_page.dart';
 import 'package:papers/providers/page_count_provider.dart';
 import 'package:provider/provider.dart';
 
 class NavigationPage extends StatelessWidget {
   final List<Widget> _children = [
     FirstPage(),
-    const Text(
-      'home',
-      style: TextStyle(fontFamily: 'Comfortaa'),
-    ),
+    HomePage(),
     const Text(
       'search',
       style: TextStyle(fontFamily: 'Comfortaa'),
