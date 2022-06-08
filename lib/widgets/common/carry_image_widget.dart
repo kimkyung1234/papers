@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:papers/widgets/common/indicator_widget.dart';
 
 Widget carryImageWidget(
     {required String url,
+    required double height,
     BoxFit boxFit = BoxFit.fitHeight,
     double radius = 20}) {
   return Image.network(
@@ -22,10 +24,8 @@ Widget carryImageWidget(
         height: 100,
         width: 100,
         margin: const EdgeInsets.fromLTRB(0, 50, 0, 50),
-        child: const Center(
-          child: CupertinoActivityIndicator(
-            color: Colors.black,
-          ),
+        child: Center(
+          child: circularIndicatorWidget(height: height),
         ),
       );
     },
