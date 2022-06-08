@@ -4,9 +4,18 @@ import 'package:provider/provider.dart';
 
 class NavigationPage extends StatelessWidget {
   final List<Widget> _children = const [
-    Text('first'),
-    Text('home'),
-    Text('search')
+    Text(
+      'first',
+      style: TextStyle(fontFamily: 'Comfortaa'),
+    ),
+    Text(
+      'home',
+      style: TextStyle(fontFamily: 'Comfortaa'),
+    ),
+    Text(
+      'search',
+      style: TextStyle(fontFamily: 'Comfortaa'),
+    )
   ];
 
   @override
