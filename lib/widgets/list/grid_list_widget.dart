@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:papers/models/photo_model.dart';
 import 'package:papers/providers/page_count_provider.dart';
 import 'package:papers/widgets/common/carry_image_widget.dart';
 import 'package:papers/widgets/common/indicator_widget.dart';
+import 'package:papers/widgets/photo_detail_dialog.dart';
 import 'package:provider/provider.dart';
 
 class GridListWidget extends StatelessWidget {
@@ -33,10 +35,12 @@ class GridListWidget extends StatelessWidget {
             mainAxisSpacing: 10,
             itemCount: postLength,
             itemBuilder: (context, index) {
-              dynamic data = provider.getPostList[index];
+              Photo data = provider.getPostList[index];
 
               return GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  photoDetailDialog(context: context, photoData: data);
+                },
                 child: Container(
                   decoration: const BoxDecoration(
                       color: Colors.transparent,
@@ -44,7 +48,7 @@ class GridListWidget extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                     child: carryImageWidget(
-                      url: data.urls!.regularUrl ?? '',
+                      url: data.urls!.smallUrl ?? '',
                       boxFit: BoxFit.fitHeight,
                       height: 200,
                     ),
