@@ -21,7 +21,7 @@ class Photo {
   });
   String? id;
   String? createdDate;
-  String? color;
+  int? color;
   String? description;
   Urls? urls;
   Links? links;
@@ -32,21 +32,25 @@ class Photo {
   int? views;
   int? downloads;
 
-  factory Photo.fromJson(Map<String, dynamic> json) => Photo(
-        id: json['id'],
-        createdDate: json['created_at'],
-        color: json['color'],
-        description: json['description'],
-        urls: Urls.fromJson(json['urls']),
-        links: Links.fromJson(json['links']),
-        user: User.fromJson(json['user']),
-        exif: Exif.fromJson(json['exif']),
-        location: Location.fromJson(json['location']),
-        likes: json['likes'],
-        views: json['views'],
-        downloads: json['downloads'],
-      );
+  factory Photo.fromJson(Map<String, dynamic> json) {
+    String strColor = json['color'].toString().replaceAll('#', '');
+    int hexColor = int.parse('0xff$strColor');
 
+    return Photo(
+      id: json['id'],
+      createdDate: json['created_at'],
+      color: hexColor,
+      description: json['description'],
+      urls: Urls.fromJson(json['urls']),
+      links: Links.fromJson(json['links']),
+      user: User.fromJson(json['user']),
+      exif: Exif.fromJson(json['exif']),
+      location: Location.fromJson(json['location']),
+      likes: json['likes'],
+      views: json['views'],
+      downloads: json['downloads'],
+    );
+  }
   Map<String, dynamic> toJson() => {
         'id': id,
         'createdDate': createdDate,
