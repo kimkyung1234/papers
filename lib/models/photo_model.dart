@@ -1,3 +1,4 @@
+import 'package:papers/models/exif_model.dart';
 import 'package:papers/models/links_model.dart';
 import 'package:papers/models/location_model.dart';
 import 'package:papers/models/urls_model.dart';
@@ -12,8 +13,11 @@ class Photo {
     this.urls,
     this.links,
     this.user,
+    this.exif,
     this.location,
     this.likes,
+    this.views,
+    this.downloads,
   });
   String? id;
   String? createdDate;
@@ -22,8 +26,11 @@ class Photo {
   Urls? urls;
   Links? links;
   User? user;
+  Exif? exif;
   Location? location;
   int? likes;
+  int? views;
+  int? downloads;
 
   factory Photo.fromJson(Map<String, dynamic> json) => Photo(
         id: json['id'],
@@ -33,8 +40,11 @@ class Photo {
         urls: Urls.fromJson(json['urls']),
         links: Links.fromJson(json['links']),
         user: User.fromJson(json['user']),
+        exif: Exif.fromJson(json['exif']),
         location: Location.fromJson(json['location']),
         likes: json['likes'],
+        views: json['views'],
+        downloads: json['downloads'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,7 +55,10 @@ class Photo {
         'urls': urls,
         'links': links,
         'user': user,
+        'exif': exif,
         'locatoin': location,
         'likes': likes,
+        'views': views,
+        'downloads': downloads
       };
 }

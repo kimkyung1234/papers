@@ -14,7 +14,7 @@ class Exif {
   String? exposureTime;
   String? aperture;
   String? focalLength;
-  String? iso;
+  int? iso;
 
   factory Exif.fromJson(Map<String, dynamic> json) => Exif(
         make: json['make'],

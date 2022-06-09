@@ -11,16 +11,16 @@ class Location {
   String? name;
   String? city;
   String? country;
-  String? latitude;
-  String? longitude;
+  double? latitude;
+  double? longitude;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
         title: json['title'] ?? 'No data',
         name: json['name'] ?? 'No data',
         city: json['city'] ?? 'No data',
         country: json['country'] ?? 'No data',
-        latitude: json['position']['latitude'] ?? 'No data',
-        longitude: json['position']['longitude'] ?? 'No data',
+        latitude: json['position']['latitude'],
+        longitude: json['position']['longitude'],
       );
 
   Map<String, dynamic> toJson() => {
