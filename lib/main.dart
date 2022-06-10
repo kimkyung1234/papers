@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:papers/pages/navigation_page.dart';
 import 'package:papers/providers/page_count_provider.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: NavigationPage(),
     );
