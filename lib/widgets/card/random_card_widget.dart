@@ -40,7 +40,10 @@ class RandomCardWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 18),
-                UserInfoWidget(userData: data.user!),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: UserInfoWidget(userData: data.user!),
+                )
               ],
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/user_model.dart';
+import 'package:papers/pages/user_detail_page.dart';
 import 'package:papers/widgets/common/carry_image_widget.dart';
 import 'package:papers/widgets/common/custom_text.dart';
 
@@ -13,23 +14,40 @@ class UserInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const SizedBox(width: 18),
-        SizedBox(
-          height: 40,
-          child: carryImageWidget(
-            url: userData.smallProfileImage!,
-            radius: 100,
-            height: 40,
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UserDetailPage(userData: userData),
           ),
+        );
+      },
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.65,
+        child: Row(
+          children: [
+            const SizedBox(width: 18),
+            SizedBox(
+              height: 40,
+              child: carryImageWidget(
+                url: userData.smallProfileImage!,
+                radius: 100,
+                height: 40,
+              ),
+            ),
+            const SizedBox(width: 18),
+            Flexible(
+              flex: 1,
+              child: CustomText(
+                text: userData.userName!,
+                alignment: Alignment.bottomLeft,
+                fontSize: 17,
+              ),
+            ),
+          ],
         ),
-        const SizedBox(width: 18),
-        CustomText(
-          text: userData.userName!,
-          fontSize: 17,
-        )
-      ],
+      ),
     );
   }
 }

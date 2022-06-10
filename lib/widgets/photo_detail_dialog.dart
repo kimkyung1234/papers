@@ -45,7 +45,7 @@ Future<void> photoDetailDialog(
                       ),
                       const SizedBox(width: 5),
                     ],
-                  )
+                  ),
                 ],
               ),
               const SizedBox(height: 18),
@@ -107,11 +107,14 @@ Future<void> photoDetailDialog(
                           color: Colors.grey,
                           size: 18,
                         ),
-                        CustomText(
-                          text: 'location: ${photoData.location!.title}',
-                          fontSize: 12,
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.only(left: 15, right: 5),
+                        Flexible(
+                          flex: 1,
+                          child: CustomText(
+                            text: 'location: ${photoData.location!.title}',
+                            fontSize: 12,
+                            alignment: Alignment.centerLeft,
+                            padding: const EdgeInsets.only(left: 15, right: 5),
+                          ),
                         ),
                       ],
                     ),
@@ -136,6 +139,7 @@ Future<void> photoDetailDialog(
                   ],
                 ),
               ),
+              const SizedBox(height: 30),
             ],
           ),
         ),
