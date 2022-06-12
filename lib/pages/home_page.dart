@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:papers/widgets/list/grid_list_widget.dart';
+import 'package:papers/widgets/list/helper/home_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: GridListWidget(),
+              child: HomeListWidget(),
             ),
           ],
         ),
