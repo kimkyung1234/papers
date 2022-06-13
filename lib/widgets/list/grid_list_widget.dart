@@ -7,11 +7,13 @@ import 'package:papers/widgets/photo_detail_dialog.dart';
 class GridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
   final int itemCount;
+  final bool tap;
 
   const GridListWidget({
     super.key,
     required this.dataList,
     required this.itemCount,
+    this.tap = true,
   });
 
   @override
@@ -26,7 +28,9 @@ class GridListWidget extends StatelessWidget {
         Photo data = dataList[index];
         return GestureDetector(
           onTap: () {
-            photoDetailDialog(context: context, photoData: data);
+            if (tap == true) {
+              photoDetailDialog(context: context, photoData: data);
+            }
           },
           child: Container(
             decoration: const BoxDecoration(
