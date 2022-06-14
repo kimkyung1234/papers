@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:papers/models/photo_model.dart';
-import 'package:papers/services/photo_api.dart';
-import 'package:papers/widgets/common/carry_image_widget.dart';
-import 'package:papers/widgets/common/indicator_widget.dart';
-import 'package:papers/widgets/common/user_info_widget.dart';
+import 'package:papers/models/models.dart';
+import 'package:papers/services/services.dart';
+import 'package:papers/widgets/widgets.dart';
 
 class RandomCardWidget extends StatelessWidget {
   PhotoApiHelper photoApiHelper = PhotoApiHelper();

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:papers/models/photos_list_model.dart';
-import 'package:papers/widgets/common/indicator_widget.dart';
-import 'package:papers/widgets/list/grid_list_widget.dart';
+import 'package:papers/models/models.dart';
+import 'package:papers/widgets/widgets.dart';
 
 class ListHelperWidget extends StatelessWidget {
   final Future<PhotosList> future;

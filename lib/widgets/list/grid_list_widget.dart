@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:papers/models/photo_model.dart';
-import 'package:papers/widgets/common/carry_image_widget.dart';
-import 'package:papers/widgets/photo_detail_dialog.dart';
+import 'package:papers/models/models.dart';
+import 'package:papers/widgets/widgets.dart';
 
 class GridListWidget extends StatelessWidget {
   final List<dynamic> dataList;

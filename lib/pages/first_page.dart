@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:papers/widgets/card/random_card_widget.dart';
-import 'package:papers/widgets/common/custom_text.dart';
+import 'package:papers/widgets/widgets.dart';
 
 class FirstPage extends StatelessWidget {
   @override

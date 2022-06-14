@@ -1,4 +1,4 @@
-import 'package:papers/models/photo_model.dart';
+import 'package:papers/models/models.dart';
 
 class PhotosList {
   PhotosList({

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:papers/models/user_model.dart';
-import 'package:papers/providers/page_count_provider.dart';
-import 'package:papers/services/photo_api.dart';
-import 'package:papers/widgets/common/carry_image_widget.dart';
-import 'package:papers/widgets/common/custom_text.dart';
-import 'package:papers/widgets/list/helper/user_photo_list_widget.dart';
+import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
+import 'package:papers/services/services.dart';
+import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
 class UserDetailPage extends StatelessWidget {

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:papers/models/photo_model.dart';
-import 'package:papers/widgets/common/carry_image_widget.dart';
-import 'package:papers/widgets/common/custom_text.dart';
-import 'package:papers/widgets/common/user_info_widget.dart';
+import 'package:papers/models/models.dart';
+import 'package:papers/widgets/widgets.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 

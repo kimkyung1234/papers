@@ -1,8 +1,4 @@
-import 'package:papers/models/exif_model.dart';
-import 'package:papers/models/links_model.dart';
-import 'package:papers/models/location_model.dart';
-import 'package:papers/models/urls_model.dart';
-import 'package:papers/models/user_model.dart';
+import 'package:papers/models/models.dart';
 
 class Photo {
   Photo({

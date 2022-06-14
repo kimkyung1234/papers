@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:papers/pages/navigation_page.dart';
-import 'package:papers/providers/page_count_provider.dart';
+import 'package:papers/pages/pages.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:provider/provider.dart';
 
 void main() {

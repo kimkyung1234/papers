@@ -6,6 +6,9 @@ class User {
     this.location,
     this.smallProfileImage,
     this.mediumProfileImage,
+    this.largeProfileImage,
+    this.totalLikes,
+    this.totalPhotos,
   });
   String? id;
   String? userName;
@@ -13,6 +16,9 @@ class User {
   String? location;
   String? smallProfileImage;
   String? mediumProfileImage;
+  String? largeProfileImage;
+  int? totalLikes;
+  int? totalPhotos;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         id: json['id'],
@@ -21,6 +27,9 @@ class User {
         location: json['location'],
         smallProfileImage: json['profile_image']['small'],
         mediumProfileImage: json['profile_image']['medium'],
+        largeProfileImage: json['profile_image']['large'],
+        totalLikes: json['total_likes'],
+        totalPhotos: json['total_photos'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -30,5 +39,8 @@ class User {
         'location': location,
         'smallProfileImage': smallProfileImage,
         'mediumProfileImage': mediumProfileImage,
+        'largeProfileImage': largeProfileImage,
+        'totalLikes': totalLikes,
+        'totalPhotos': totalPhotos,
       };
 }

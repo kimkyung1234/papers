@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:papers/models/user_model.dart';
-import 'package:papers/pages/user_detail_page.dart';
-import 'package:papers/widgets/common/carry_image_widget.dart';
-import 'package:papers/widgets/common/custom_text.dart';
+import 'package:papers/models/models.dart';
+import 'package:papers/pages/pages.dart';
+import 'package:papers/widgets/widgets.dart';
 
 class UserInfoWidget extends StatelessWidget {
   final User userData;

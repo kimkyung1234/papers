@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:papers/widgets/list/helper/home_list_widget.dart';
+import 'package:papers/widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   @override

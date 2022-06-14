@@ -2,8 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:papers/api_key.dart';
-import 'package:papers/models/photo_model.dart';
-import 'package:papers/models/photos_list_model.dart';
+import 'package:papers/models/models.dart';
 
 class PhotoApiHelper {
   Future<Photo> getRandomPhoto() async {

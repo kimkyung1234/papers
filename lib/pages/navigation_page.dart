@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:papers/pages/first_page.dart';
-import 'package:papers/pages/home_page.dart';
-import 'package:papers/providers/page_count_provider.dart';
+import 'package:papers/pages/pages.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:provider/provider.dart';
 
 class NavigationPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:papers/widgets/common/indicator_widget.dart';
+import 'package:papers/widgets/widgets.dart';
 
 Widget carryImageWidget(
     {required String url,
