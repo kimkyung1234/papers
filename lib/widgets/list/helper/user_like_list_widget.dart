@@ -3,19 +3,19 @@ import 'package:papers/models/models.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
 
-class UserPhotoListWidget extends StatefulWidget {
+class UserLikeListWidget extends StatefulWidget {
   final User userData;
   final bool tap;
 
-  const UserPhotoListWidget(
+  const UserLikeListWidget(
       {super.key, required this.userData, this.tap = false});
 
   @override
   // ignore: library_private_types_in_public_api
-  _UserPhotoListWidgetState createState() => _UserPhotoListWidgetState();
+  _UserLikeListWidgetState createState() => _UserLikeListWidgetState();
 }
 
-class _UserPhotoListWidgetState extends State<UserPhotoListWidget> {
+class _UserLikeListWidgetState extends State<UserLikeListWidget> {
   late ScrollController _controller;
 
   final List<Photo> _photoDataList = [];
@@ -24,7 +24,7 @@ class _UserPhotoListWidgetState extends State<UserPhotoListWidget> {
 
   Future<void> fetchImages() async {
     PhotoApiHelper photoApiHelper = PhotoApiHelper();
-    PhotosList a = await photoApiHelper.getUsersPhotos(
+    PhotosList a = await photoApiHelper.getUsersLikes(
         page: index, userName: widget.userData.userName!);
 
     setState(() {
@@ -56,6 +56,9 @@ class _UserPhotoListWidgetState extends State<UserPhotoListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.userData.totalLikes == 0) {
+      return const Center(child: CustomText(text: 'No Likes'));
+    }
     return GridListWidget(
       dataList: _photoDataList,
       itemCount: _photoDataList.length,

@@ -81,7 +81,14 @@ class UserDetailPage extends StatelessWidget {
                       tap: false,
                     ),
                   ),
-                  const Text('Tab 2'),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 15, right: 15),
+                    child: UserLikeListWidget(
+                      userData: userData,
+                      tap: false,
+                    ),
+                  ),
                   // Text('Tab 3'),
                 ],
               ),

@@ -44,4 +44,18 @@ class PhotoApiHelper {
       throw Exception('Error loading');
     }
   }
+
+  Future<PhotosList> getUsersLikes(
+      {required String userName, required int page}) async {
+    final response = await get(
+      Uri.parse(
+          'https://api.unsplash.com/users/$userName/likes?client_id=${ApiKey.apiKey}&count=6&page=$page'),
+    );
+
+    if (response.statusCode == 200) {
+      return PhotosList.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Error loading');
+    }
+  }
 }

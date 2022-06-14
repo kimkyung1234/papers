@@ -27,6 +27,7 @@ class GridListWidget extends StatelessWidget {
       itemCount: itemCount,
       itemBuilder: (context, index) {
         Photo data = dataList[index];
+
         return GestureDetector(
           onTap: () {
             if (tap == true) {
