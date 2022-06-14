@@ -5,8 +5,13 @@ import 'package:papers/widgets/list/grid_list_widget.dart';
 
 class ListHelperWidget extends StatelessWidget {
   final Future<PhotosList> future;
+  final bool tap;
 
-  const ListHelperWidget({super.key, required this.future});
+  const ListHelperWidget({
+    super.key,
+    required this.future,
+    this.tap = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +28,7 @@ class ListHelperWidget extends StatelessWidget {
         return GridListWidget(
           dataList: snapshot.data!.photos!,
           itemCount: snapshot.data!.photos!.length,
+          tap: tap,
         );
       },
     );

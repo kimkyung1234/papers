@@ -8,18 +8,20 @@ class GridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
   final int itemCount;
   final bool tap;
+  final ScrollController? controller;
 
-  const GridListWidget({
+  GridListWidget({
     super.key,
     required this.dataList,
     required this.itemCount,
     this.tap = true,
+    this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return MasonryGridView.count(
-      key: const PageStorageKey<String>('controllerA'),
+      controller: controller,
       crossAxisCount: 2,
       crossAxisSpacing: 10,
       mainAxisSpacing: 10,

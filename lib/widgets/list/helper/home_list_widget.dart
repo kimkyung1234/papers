@@ -1,36 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:papers/providers/page_count_provider.dart';
-import 'package:papers/widgets/common/indicator_widget.dart';
+import 'package:papers/models/photo_model.dart';
+import 'package:papers/models/photos_list_model.dart';
+import 'package:papers/services/photo_api.dart';
 import 'package:papers/widgets/list/grid_list_widget.dart';
-import 'package:provider/provider.dart';
 
-class HomeListWidget extends StatelessWidget {
+class HomeListWidget extends StatefulWidget {
+  @override
+  // ignore: library_private_types_in_public_api
+  _HomeListWidgetState createState() => _HomeListWidgetState();
+}
+
+class _HomeListWidgetState extends State<HomeListWidget> {
+  late ScrollController _controller;
+
+  final List<Photo> _photoDataList = [];
+
+  int index = 1;
+
+  Future<void> fetchImages() async {
+    PhotoApiHelper photoApiHelper = PhotoApiHelper();
+    PhotosList a = await photoApiHelper.getRandomPhotos(page: index);
+
+    setState(() {
+      // ignore: avoid_function_literals_in_foreach_calls
+      a.photos!.forEach((photoData) {
+        _photoDataList.add(photoData);
+      });
+
+      index++;
+    });
+  }
+
+  void _scrollListener() {
+    if (_controller.offset >= _controller.position.maxScrollExtent &&
+        !_controller.position.outOfRange) {
+      fetchImages();
+    }
+  }
+
+  @override
+  void initState() {
+    _controller = ScrollController();
+    _controller.addListener(_scrollListener);
+
+    fetchImages();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<PageCountProvider>(context);
-    var postLength = provider.getPostList.length;
-
-    return FutureBuilder(
-      future: provider.firstLoad(),
-      builder: (_, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: circularIndicatorWidget(height: 100));
-        }
-
-        return NotificationListener<ScrollNotification>(
-          onNotification: (ScrollNotification scrollInfo) {
-            if (scrollInfo.metrics.pixels ==
-                scrollInfo.metrics.maxScrollExtent) {
-              provider.loadMore();
-            }
-            return false;
-          },
-          child: GridListWidget(
-            dataList: provider.getPostList,
-            itemCount: postLength,
-          ),
-        );
-      },
+    return GridListWidget(
+      dataList: _photoDataList,
+      itemCount: _photoDataList.length,
+      controller: _controller,
     );
   }
 }
