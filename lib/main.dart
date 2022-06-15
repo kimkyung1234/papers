@@ -8,6 +8,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider()),
         ChangeNotifierProvider<PageCountProvider>(
             create: (_) => PageCountProvider())
       ],
