@@ -11,7 +11,10 @@ void main() {
         ChangeNotifierProvider<PageCountProvider>(
             create: (_) => PageCountProvider())
       ],
-      child: const MyApp(),
+      child: const AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark,
+        child: MyApp(),
+      ),
     ),
   );
 }
