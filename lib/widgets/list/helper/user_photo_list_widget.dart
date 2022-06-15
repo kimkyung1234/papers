@@ -54,7 +54,7 @@ class _UserPhotoListWidgetState extends State<UserPhotoListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GridListWidget(
+    return StaggeredGridListWidget(
       dataList: _photoDataList,
       itemCount: _photoDataList.length,
       controller: _controller,

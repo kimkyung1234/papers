@@ -49,7 +49,7 @@ class _HomeListWidgetState extends State<HomeListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GridListWidget(
+    return StaggeredGridListWidget(
       dataList: _photoDataList,
       itemCount: _photoDataList.length,
       controller: _controller,

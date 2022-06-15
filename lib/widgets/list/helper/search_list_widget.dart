@@ -72,7 +72,7 @@ class _SearchListWidgetState extends State<SearchListWidget> {
           ),
           const SizedBox(height: 10),
           Expanded(
-            child: GridListWidget(
+            child: StaggeredGridListWidget(
               dataList: _photoDataList,
               itemCount: _photoDataList.length,
               controller: _controller,

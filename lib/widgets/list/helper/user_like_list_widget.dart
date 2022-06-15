@@ -57,7 +57,7 @@ class _UserLikeListWidgetState extends State<UserLikeListWidget> {
     if (widget.userData.totalLikes == 0) {
       return const Center(child: CustomText(text: 'No Likes'));
     }
-    return GridListWidget(
+    return StaggeredGridListWidget(
       dataList: _photoDataList,
       itemCount: _photoDataList.length,
       controller: _controller,

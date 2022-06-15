@@ -21,7 +21,7 @@ class ListHelperWidget extends StatelessWidget {
           return Center(child: circularIndicatorWidget(height: 100));
         }
 
-        return GridListWidget(
+        return StaggeredGridListWidget(
           dataList: snapshot.data!.photos!,
           itemCount: snapshot.data!.photos!.length,
           tap: tap,
