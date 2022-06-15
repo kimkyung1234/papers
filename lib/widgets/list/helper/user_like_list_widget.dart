@@ -5,10 +5,8 @@ import 'package:papers/widgets/widgets.dart';
 
 class UserLikeListWidget extends StatefulWidget {
   final User userData;
-  final bool tap;
 
-  const UserLikeListWidget(
-      {super.key, required this.userData, this.tap = false});
+  const UserLikeListWidget({super.key, required this.userData});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -63,7 +61,6 @@ class _UserLikeListWidgetState extends State<UserLikeListWidget> {
       dataList: _photoDataList,
       itemCount: _photoDataList.length,
       controller: _controller,
-      tap: widget.tap,
     );
   }
 }

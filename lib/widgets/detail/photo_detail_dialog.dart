@@ -60,63 +60,13 @@ Future<void> photoDetailDialog(
                         height: 600,
                       ),
                     ),
+                    photoData.exif == null
+                        ? const SizedBox()
+                        : Column(children: [
+                            const SizedBox(height: 20),
+                            PhotoInfoWidget(photoData: photoData),
+                          ]),
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const CustomText(
-                              text: 'views',
-                              fontSize: 12,
-                              textColor: Colors.grey,
-                              padding: EdgeInsets.only(bottom: 5),
-                            ),
-                            CustomText(
-                              text: photoData.views.toString(),
-                              fontSize: 14,
-                            )
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const CustomText(
-                              text: 'downloads',
-                              fontSize: 12,
-                              textColor: Colors.grey,
-                              padding: EdgeInsets.only(bottom: 5),
-                            ),
-                            CustomText(
-                              text: photoData.downloads.toString(),
-                              fontSize: 14,
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        const SizedBox(width: 15),
-                        const Icon(
-                          Icons.pin_drop,
-                          color: Colors.grey,
-                          size: 18,
-                        ),
-                        Flexible(
-                          flex: 1,
-                          child: CustomText(
-                            text: 'location: ${photoData.location!.title}',
-                            fontSize: 12,
-                            alignment: Alignment.centerLeft,
-                            padding: const EdgeInsets.only(left: 15, right: 5),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 13),
                     Row(
                       children: [
                         const SizedBox(width: 15),

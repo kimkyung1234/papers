@@ -1,4 +1,5 @@
-export 'photo_detail_dialog.dart';
+export 'detail/photo_info_widget.dart';
+export 'detail/photo_detail_dialog.dart';
 export 'card/random_card_widget.dart';
 export 'common/carry_image_widget.dart';
 export 'common/custom_text.dart';

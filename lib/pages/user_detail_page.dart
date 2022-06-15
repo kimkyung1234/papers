@@ -77,7 +77,6 @@ class UserDetailPage extends StatelessWidget {
                         const EdgeInsets.only(top: 10, left: 15, right: 15),
                     child: UserPhotoListWidget(
                       userData: userData,
-                      tap: false,
                     ),
                   ),
                   Padding(
@@ -85,7 +84,6 @@ class UserDetailPage extends StatelessWidget {
                         const EdgeInsets.only(top: 10, left: 15, right: 15),
                     child: UserLikeListWidget(
                       userData: userData,
-                      tap: false,
                     ),
                   ),
                 ],

@@ -5,10 +5,8 @@ import 'package:papers/widgets/widgets.dart';
 
 class UserPhotoListWidget extends StatefulWidget {
   final User userData;
-  final bool tap;
 
-  const UserPhotoListWidget(
-      {super.key, required this.userData, this.tap = false});
+  const UserPhotoListWidget({super.key, required this.userData});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -60,7 +58,6 @@ class _UserPhotoListWidgetState extends State<UserPhotoListWidget> {
       dataList: _photoDataList,
       itemCount: _photoDataList.length,
       controller: _controller,
-      tap: widget.tap,
     );
   }
 }

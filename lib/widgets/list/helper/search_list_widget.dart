@@ -76,7 +76,6 @@ class _SearchListWidgetState extends State<SearchListWidget> {
               dataList: _photoDataList,
               itemCount: _photoDataList.length,
               controller: _controller,
-              tap: false,
             ),
           ),
         ],
