@@ -65,7 +65,6 @@ class UserDetailPage extends StatelessWidget {
                   tabs: [
                     Tab(text: 'Photos ${userData.totalPhotos}'),
                     Tab(text: 'Likes ${userData.totalLikes}'),
-                    // const Tab(text: 'Rocket')
                   ],
                 ),
               ),
@@ -89,7 +88,6 @@ class UserDetailPage extends StatelessWidget {
                       tap: false,
                     ),
                   ),
-                  // Text('Tab 3'),
                 ],
               ),
             )

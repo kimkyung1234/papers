@@ -20,9 +20,6 @@ class ListHelperWidget extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: circularIndicatorWidget(height: 100));
         }
-        // else if (snapshot.data == null) {
-        //   return Center(child: circularIndicatorWidget(height: 100));
-        // }
 
         return GridListWidget(
           dataList: snapshot.data!.photos!,

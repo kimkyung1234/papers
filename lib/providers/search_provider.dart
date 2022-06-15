@@ -6,7 +6,6 @@ class SearchProvider with ChangeNotifier {
   String? get getInputText => _inputText;
 
   void setText(String text) {
-    print('set: $text');
     _inputText = text;
     notifyListeners();
   }
