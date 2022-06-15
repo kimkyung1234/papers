@@ -67,23 +67,20 @@ Future<void> photoDetailDialog(
                             PhotoInfoWidget(photoData: photoData),
                           ]),
                     const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        const SizedBox(width: 15),
-                        const Icon(
-                          Icons.calendar_month,
-                          color: Colors.grey,
-                          size: 18,
-                        ),
-                        CustomText(
-                          text:
-                              'Created on ${DateFormat.yMMMd().format(DateTime.parse(photoData.createdDate!))}',
-                          fontSize: 12,
-                          alignment: Alignment.centerLeft,
-                          padding: const EdgeInsets.only(left: 15, right: 5),
-                        ),
-                      ],
+                    IconTextWidget(
+                      text:
+                          'Created on ${DateFormat.yMMMd().format(DateTime.parse(photoData.createdDate!))}',
+                      icon: Icons.calendar_month,
                     ),
+                    photoData.description == null
+                        ? const SizedBox()
+                        : Padding(
+                            padding: const EdgeInsets.only(
+                                left: 15, right: 15, top: 25),
+                            child: Text(
+                              photoData.description!,
+                              style: const TextStyle(fontFamily: 'Comfortaa'),
+                            )),
                   ],
                 ),
               ),
