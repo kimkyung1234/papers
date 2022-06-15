@@ -7,10 +7,7 @@ class NavigationPage extends StatelessWidget {
   final List<Widget> _children = [
     FirstPage(),
     HomePage(),
-    const Text(
-      'search',
-      style: TextStyle(fontFamily: 'Comfortaa'),
-    )
+    SearchPage(),
   ];
 
   @override
