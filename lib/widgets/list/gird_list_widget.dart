@@ -1,39 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:papers/models/models.dart';
 import 'package:papers/widgets/widgets.dart';
 
 class GridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
   final int itemCount;
-  final bool tap;
   final ScrollController? controller;
 
   GridListWidget({
     super.key,
     required this.dataList,
     required this.itemCount,
-    this.tap = true,
     this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    return MasonryGridView.count(
+    return GridView.builder(
       controller: controller,
-      crossAxisCount: 2,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+      ),
       itemCount: itemCount,
       itemBuilder: (context, index) {
-        Photo data = dataList[index];
+        Collection data = dataList[index];
 
         return GestureDetector(
-          onTap: () {
-            if (tap == true) {
-              photoDetailDialog(context: context, photoData: data);
-            }
-          },
+          onTap: () {},
           child: Container(
             decoration: const BoxDecoration(
                 color: Colors.transparent,
@@ -41,8 +36,8 @@ class GridListWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(15)),
               child: carryImageWidget(
-                url: data.urls!.smallUrl ?? '',
-                boxFit: BoxFit.fitHeight,
+                url: data.coverPhoto!.urls!.regularUrl!,
+                boxFit: BoxFit.cover,
                 height: 200,
               ),
             ),

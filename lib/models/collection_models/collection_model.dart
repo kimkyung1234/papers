@@ -6,7 +6,6 @@ class Collection {
     this.title,
     this.totalPhotos,
     this.shareKey,
-    this.links,
     this.user,
     this.coverPhoto,
   });
@@ -14,7 +13,6 @@ class Collection {
   String? title;
   int? totalPhotos;
   String? shareKey;
-  Links? links;
   User? user;
   Photo? coverPhoto;
 
@@ -23,9 +21,8 @@ class Collection {
         title: json['title'],
         totalPhotos: json['total_photos'],
         shareKey: json['share_key'],
-        links: json['links'],
-        user: json['user'],
-        coverPhoto: json['cover_photo'],
+        user: User.fromJson(json['user']),
+        coverPhoto: Photo.fromJson(json['cover_photo']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -33,7 +30,6 @@ class Collection {
         'title': title,
         'totalPhotos': totalPhotos,
         'shareKey': shareKey,
-        'links': links,
         'user': user,
         'coverPhoto': coverPhoto,
       };

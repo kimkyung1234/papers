@@ -8,6 +8,7 @@ class NavigationPage extends StatelessWidget {
     FirstPage(),
     HomePage(),
     SearchPage(),
+    CollectionPage(),
   ];
 
   @override
@@ -27,6 +28,7 @@ class NavigationPage extends StatelessWidget {
           onTap: provider.onTabTapped,
           currentIndex: provider.getCurrentIndex,
           selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.grey,
           elevation: 0.0,
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -45,6 +47,13 @@ class NavigationPage extends StatelessWidget {
             BottomNavigationBarItem(
               icon: Icon(Icons.search),
               label: 'search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.apps,
+                size: 21,
+              ),
+              label: 'collection',
             ),
           ],
         ),
