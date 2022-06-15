@@ -16,7 +16,7 @@ class SearchListWidget extends StatefulWidget {
 class _SearchListWidgetState extends State<SearchListWidget> {
   late ScrollController _controller;
 
-  late List<Photo> _photoDataList = [];
+  final List<Photo> _photoDataList = [];
 
   int index = 1;
 
@@ -54,12 +54,20 @@ class _SearchListWidgetState extends State<SearchListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (_photoDataList.isEmpty) {
+      return Center(
+        child: CustomText(
+          text: 'There is no information for \n "${widget.inputText}"',
+          textAlign: TextAlign.center,
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: Column(
         children: [
           CustomText(
-            text: 'Result of ${widget.inputText}',
+            text: 'Result of "${widget.inputText}"',
             alignment: Alignment.centerLeft,
           ),
           const SizedBox(height: 10),
