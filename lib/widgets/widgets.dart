@@ -1,3 +1,4 @@
+export 'detail/icon_text_widget.dart';
 export 'detail/photo_info_widget.dart';
 export 'detail/photo_detail_dialog.dart';
 export 'card/random_card_widget.dart';
