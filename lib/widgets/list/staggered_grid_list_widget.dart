@@ -7,6 +7,7 @@ class StaggeredGridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
   final int itemCount;
   final bool tap;
+  final bool tapUser;
   final ScrollController? controller;
 
   StaggeredGridListWidget({
@@ -14,6 +15,7 @@ class StaggeredGridListWidget extends StatelessWidget {
     required this.dataList,
     required this.itemCount,
     this.tap = true,
+    this.tapUser = true,
     this.controller,
   });
 
@@ -31,7 +33,8 @@ class StaggeredGridListWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             if (tap == true) {
-              photoDetailDialog(context: context, photoData: data);
+              photoDetailDialog(
+                  context: context, photoData: data, tap: tapUser);
             }
           },
           child: Container(

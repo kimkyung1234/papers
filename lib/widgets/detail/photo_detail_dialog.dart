@@ -5,7 +5,9 @@ import 'package:papers/widgets/widgets.dart';
 import 'package:intl/intl.dart';
 
 Future<void> photoDetailDialog(
-    {required BuildContext context, required Photo photoData}) async {
+    {required BuildContext context,
+    required Photo photoData,
+    bool tap = true}) async {
   showDialog(
     context: context,
     barrierDismissible: true,
@@ -23,7 +25,10 @@ Future<void> photoDetailDialog(
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  UserInfoWidget(userData: photoData.user!),
+                  UserInfoWidget(
+                    userData: photoData.user!,
+                    tap: tap,
+                  ),
                   Row(
                     children: [
                       FlatButton(

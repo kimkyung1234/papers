@@ -58,6 +58,7 @@ class _UserPhotoListWidgetState extends State<UserPhotoListWidget> {
       dataList: _photoDataList,
       itemCount: _photoDataList.length,
       controller: _controller,
+      tapUser: false,
     );
   }
 }

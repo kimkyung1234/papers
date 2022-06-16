@@ -5,22 +5,26 @@ import 'package:papers/widgets/widgets.dart';
 
 class UserInfoWidget extends StatelessWidget {
   final User userData;
+  final bool tap;
 
   const UserInfoWidget({
     super.key,
     required this.userData,
+    this.tap = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => UserDetailPage(userData: userData),
-          ),
-        );
+        if (tap) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UserDetailPage(userData: userData),
+            ),
+          );
+        }
       },
       child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.65,
