@@ -9,6 +9,7 @@ class NavigationPage extends StatelessWidget {
     HomePage(),
     SearchPage(),
     CollectionPage(),
+    SettingPage(),
   ];
 
   @override
@@ -54,6 +55,13 @@ class NavigationPage extends StatelessWidget {
                 size: 21,
               ),
               label: 'collection',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings_outlined,
+                size: 20,
+              ),
+              label: 'setting',
             ),
           ],
         ),

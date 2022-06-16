@@ -28,6 +28,6 @@ final lightTheme = ColorTheme(
 final darkTheme = ColorTheme(
   backgroundColor: const Color(0xFF1E212C),
   textColor: Colors.white,
-  underTextColor: const Color(0xFFC8C7C7),
+  underTextColor: Colors.grey, // const Color(0xFFC8C7C7),
   cardColor: const Color(0xFF313242),
 );
