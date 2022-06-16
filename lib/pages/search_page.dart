@@ -8,6 +8,8 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SearchProvider>(context);
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
 
     return SafeArea(
       child: Column(
@@ -16,14 +18,15 @@ class SearchPage extends StatelessWidget {
             padding: const EdgeInsets.all(20),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: theme.color,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(5),
                 child: TextField(
-                  cursorColor: Colors.black,
+                  cursorColor: Colors.grey,
                   textInputAction: TextInputAction.go,
+                  style: const TextStyle(color: Colors.grey),
                   onSubmitted: (value) async {
                     provider.setText(value);
 
@@ -38,13 +41,13 @@ class SearchPage extends StatelessWidget {
                     );
                   },
                   decoration: const InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.grey,
-                    ),
-                    border: InputBorder.none,
-                    hintText: 'Search',
-                  ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.grey,
+                      ),
+                      border: InputBorder.none,
+                      hintText: 'Search',
+                      hintStyle: TextStyle(color: Colors.grey)),
                 ),
               ),
             ),

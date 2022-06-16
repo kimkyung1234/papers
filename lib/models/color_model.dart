@@ -6,10 +6,12 @@ class ColorTheme {
     this.textColor,
     this.underTextColor,
     this.cardColor,
+    this.color,
   });
 
   Color? backgroundColor;
   Color? textColor;
   Color? underTextColor;
   Color? cardColor;
+  Color? color;
 }

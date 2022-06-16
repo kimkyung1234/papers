@@ -4,10 +4,12 @@ import 'package:papers/widgets/widgets.dart';
 // ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
-Future<void> photoDetailDialog(
-    {required BuildContext context,
-    required Photo photoData,
-    bool tap = true}) async {
+Future<void> photoDetailDialog({
+  required BuildContext context,
+  required Photo photoData,
+  required ColorTheme theme,
+  bool tap = true,
+}) async {
   showDialog(
     context: context,
     barrierDismissible: true,
@@ -16,7 +18,7 @@ Future<void> photoDetailDialog(
         padding: const EdgeInsets.all(30),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: theme.backgroundColor,
             borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
@@ -41,9 +43,9 @@ Future<void> photoDetailDialog(
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: const Icon(
+                        child: Icon(
                           Icons.close,
-                          color: Colors.black,
+                          color: theme.textColor,
                         ),
                       ),
                       const SizedBox(width: 5),
@@ -75,6 +77,7 @@ Future<void> photoDetailDialog(
                     IconTextWidget(
                       text:
                           'Created on ${DateFormat.yMMMd().format(DateTime.parse(photoData.createdDate!))}',
+                      textColor: theme.textColor!,
                       icon: Icons.calendar_month,
                     ),
                     photoData.description == null

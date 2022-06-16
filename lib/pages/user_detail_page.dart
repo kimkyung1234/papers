@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class UserDetailPage extends StatelessWidget {
   final User userData;
@@ -13,20 +15,26 @@ class UserDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     return DefaultTabController(
       length: 2,
       initialIndex: 0,
       child: Scaffold(
+        backgroundColor: theme.backgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          systemOverlayStyle: themeMode.getThemeDark
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark,
           elevation: 0,
           leadingWidth: 85,
           leading: IconButton(
             splashRadius: 28,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_ios,
-              color: Colors.black,
+              color: theme.textColor,
             ),
             onPressed: () {
               Navigator.pop(context);
@@ -47,6 +55,7 @@ class UserDetailPage extends StatelessWidget {
             const SizedBox(height: 18),
             CustomText(
               text: userData.userName!,
+              textColor: theme.textColor!,
               fontSize: 25,
             ),
             SizedBox(
@@ -54,10 +63,11 @@ class UserDetailPage extends StatelessWidget {
               child: AppBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0.0,
+                leading: const SizedBox(),
                 bottom: TabBar(
-                  labelColor: Colors.black,
+                  labelColor: theme.textColor,
                   unselectedLabelColor: Colors.grey,
-                  indicatorColor: Colors.black,
+                  indicatorColor: theme.textColor,
                   tabs: [
                     Tab(text: 'Photos ${userData.totalPhotos}'),
                     Tab(text: 'Likes ${userData.totalLikes}'),

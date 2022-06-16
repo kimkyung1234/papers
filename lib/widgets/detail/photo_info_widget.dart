@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class PhotoInfoWidget extends StatelessWidget {
   final Photo photoData;
@@ -12,6 +14,9 @@ class PhotoInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -26,6 +31,7 @@ class PhotoInfoWidget extends StatelessWidget {
             ),
             CustomText(
               text: photoData.views.toString(),
+              textColor: theme.textColor!,
               fontSize: 14,
             )
           ],
@@ -41,6 +47,7 @@ class PhotoInfoWidget extends StatelessWidget {
             ),
             CustomText(
               text: photoData.downloads.toString(),
+              textColor: theme.textColor!,
               fontSize: 14,
             )
           ],

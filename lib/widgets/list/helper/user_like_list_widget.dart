@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class UserLikeListWidget extends StatefulWidget {
   final User userData;
@@ -54,8 +56,15 @@ class _UserLikeListWidgetState extends State<UserLikeListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     if (widget.userData.totalLikes == 0) {
-      return const Center(child: CustomText(text: 'No Likes'));
+      return Center(
+          child: CustomText(
+        text: 'No Likes',
+        textColor: theme.textColor!,
+      ));
     }
     return StaggeredGridListWidget(
       dataList: _photoDataList,

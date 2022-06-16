@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class CollectionListWidget extends StatefulWidget {
   @override
@@ -49,20 +51,25 @@ class _CollectionListWidgetState extends State<CollectionListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     return ListView(
       controller: _controller,
       children: [
-        const CustomText(
+        CustomText(
           text: 'Collections',
           fontSize: 30,
+          textColor: theme.textColor!,
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 7, top: 10, bottom: 12),
+          padding: const EdgeInsets.only(left: 7, top: 10, bottom: 12),
         ),
-        const CustomText(
+        CustomText(
           text:
               'Explore the world through collections of beautiful photos free to use under the',
           fontSize: 15,
-          padding: EdgeInsets.only(left: 7, bottom: 17),
+          textColor: theme.textColor!,
+          padding: const EdgeInsets.only(left: 7, bottom: 17),
           alignment: Alignment.centerLeft,
           overflow: TextOverflow.visible,
         ),

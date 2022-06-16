@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class SearchListWidget extends StatefulWidget {
   final String inputText;
@@ -54,10 +56,14 @@ class _SearchListWidgetState extends State<SearchListWidget> {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     if (_photoDataList.isEmpty) {
       return Center(
         child: CustomText(
           text: 'There is no information for \n "${widget.inputText}"',
+          textColor: theme.textColor!,
           textAlign: TextAlign.center,
         ),
       );
@@ -68,6 +74,7 @@ class _SearchListWidgetState extends State<SearchListWidget> {
         children: [
           CustomText(
             text: 'Result of "${widget.inputText}"',
+            textColor: theme.textColor!,
             alignment: Alignment.centerLeft,
           ),
           const SizedBox(height: 10),

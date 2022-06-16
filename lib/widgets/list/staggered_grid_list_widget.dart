@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class StaggeredGridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
@@ -21,6 +23,9 @@ class StaggeredGridListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     return MasonryGridView.count(
       controller: controller,
       crossAxisCount: 2,
@@ -34,7 +39,11 @@ class StaggeredGridListWidget extends StatelessWidget {
           onTap: () {
             if (tap == true) {
               photoDetailDialog(
-                  context: context, photoData: data, tap: tapUser);
+                context: context,
+                photoData: data,
+                tap: tapUser,
+                theme: theme,
+              );
             }
           },
           child: Container(

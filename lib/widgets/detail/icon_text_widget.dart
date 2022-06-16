@@ -4,11 +4,13 @@ import 'package:papers/widgets/widgets.dart';
 class IconTextWidget extends StatelessWidget {
   final String text;
   final IconData icon;
+  final Color textColor;
 
   const IconTextWidget({
     super.key,
     required this.text,
     required this.icon,
+    required this.textColor,
   });
 
   @override
@@ -23,6 +25,7 @@ class IconTextWidget extends StatelessWidget {
         ),
         CustomText(
           text: text,
+          textColor: textColor,
           fontSize: 12,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 15, right: 5),

@@ -15,8 +15,11 @@ class NavigationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<PageCountProvider>(context);
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
 
     return Scaffold(
+      backgroundColor: theme.backgroundColor,
       body: Center(
         child: _children[provider.getCurrentIndex],
       ),
@@ -24,11 +27,12 @@ class NavigationPage extends StatelessWidget {
         data: ThemeData(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+          canvasColor: theme.backgroundColor,
         ),
         child: BottomNavigationBar(
           onTap: provider.onTabTapped,
           currentIndex: provider.getCurrentIndex,
-          selectedItemColor: Colors.black,
+          selectedItemColor: theme.textColor,
           unselectedItemColor: Colors.grey,
           elevation: 0.0,
           showSelectedLabels: false,

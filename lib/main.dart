@@ -14,10 +14,7 @@ void main() {
         ChangeNotifierProvider<PageCountProvider>(
             create: (_) => PageCountProvider())
       ],
-      child: const AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.dark,
-        child: MyApp(),
-      ),
+      child: MyApp(),
     ),
   );
 }
@@ -27,12 +24,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-        ),
-      ),
+          appBarTheme: AppBarTheme(
+        systemOverlayStyle: themeMode.getThemeDark
+            ? SystemUiOverlayStyle.light
+            : SystemUiOverlayStyle.dark,
+      )),
       debugShowCheckedModeBanner: false,
       home: NavigationPage(),
     );

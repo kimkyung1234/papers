@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
 import 'package:papers/pages/pages.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class GridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
@@ -21,6 +23,9 @@ class GridListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     return GridView.builder(
       shrinkWrap: shrinkWrap,
       controller: controller,
@@ -48,8 +53,8 @@ class GridListWidget extends StatelessWidget {
             );
           },
           child: Container(
-            decoration: const BoxDecoration(
-                color: Color(0xFFF6F6F6),
+            decoration: BoxDecoration(
+                color: theme.cardColor,
                 borderRadius: BorderRadius.all(Radius.circular(5))),
             child: Column(
               children: [
@@ -66,6 +71,7 @@ class GridListWidget extends StatelessWidget {
                 CustomText(
                   text: data.title!,
                   fontSize: 14,
+                  textColor: theme.textColor!,
                   padding: const EdgeInsets.only(left: 10, top: 5),
                   alignment: Alignment.centerLeft,
                 ),
