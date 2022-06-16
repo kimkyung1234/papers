@@ -25,7 +25,7 @@ Widget carryImageWidget(
         width: 100,
         margin: const EdgeInsets.fromLTRB(0, 50, 0, 50),
         child: Center(
-          child: circularIndicatorWidget(height: height),
+          child: CircularIndicatorWidget(height: height),
         ),
       );
     },

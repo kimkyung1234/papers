@@ -1,13 +1,24 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:papers/providers/providers.dart';
+import 'package:provider/provider.dart';
 
-Widget circularIndicatorWidget({required double height}) {
-  return SizedBox(
-    height: height,
-    child: const Center(
-      child: CupertinoActivityIndicator(
-        color: Colors.black,
+class CircularIndicatorWidget extends StatelessWidget {
+  final double height;
+
+  const CircularIndicatorWidget({super.key, required this.height});
+
+  @override
+  Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
+    return SizedBox(
+      height: height,
+      child: Center(
+        child: CupertinoActivityIndicator(
+          color: theme.textColor,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

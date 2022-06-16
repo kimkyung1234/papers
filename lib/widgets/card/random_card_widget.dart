@@ -12,7 +12,7 @@ class RandomCardWidget extends StatelessWidget {
       future: photoApiHelper.getRandomPhoto(),
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return circularIndicatorWidget(height: 500);
+          return const CircularIndicatorWidget(height: 500);
         }
 
         final data = snapshot.data!;

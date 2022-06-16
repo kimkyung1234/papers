@@ -18,7 +18,7 @@ class ListHelperWidget extends StatelessWidget {
       future: future,
       builder: (_, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: circularIndicatorWidget(height: 100));
+          return const Center(child: CircularIndicatorWidget(height: 100));
         }
 
         return StaggeredGridListWidget(
