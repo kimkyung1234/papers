@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/pages/pages.dart';
 import 'package:papers/widgets/widgets.dart';
 
 class GridListWidget extends StatelessWidget {
@@ -35,7 +36,17 @@ class GridListWidget extends StatelessWidget {
         Collection data = dataList[index];
 
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CollectionDetailPage(
+                  collectionId: data.id!,
+                  title: data.title!,
+                ),
+              ),
+            );
+          },
           child: Container(
             decoration: const BoxDecoration(
                 color: Color(0xFFF6F6F6),

@@ -1,3 +1,4 @@
+export 'collection_detail_page.dart';
 export 'collection_page.dart';
 export 'first_page.dart';
 export 'home_page.dart';

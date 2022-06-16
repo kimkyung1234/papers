@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:papers/models/models.dart';
-import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
-import 'package:provider/provider.dart';
 
 class UserDetailPage extends StatelessWidget {
   final User userData;
@@ -15,8 +13,6 @@ class UserDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PageCountProvider>(context);
-
     return DefaultTabController(
       length: 2,
       initialIndex: 0,

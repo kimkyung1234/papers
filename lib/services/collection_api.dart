@@ -17,4 +17,18 @@ class CollectionApiHelper {
       throw Exception('Error loading');
     }
   }
+
+  Future<PhotosList> getCollectionPhotos(
+      {required String id, required int page}) async {
+    final response = await get(
+      Uri.parse(
+          'https://api.unsplash.com/collections/$id/photos?client_id=${ApiKey.apiKey}&count=10&page=$page'),
+    );
+
+    if (response.statusCode == 200) {
+      return PhotosList.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Error loading');
+    }
+  }
 }
