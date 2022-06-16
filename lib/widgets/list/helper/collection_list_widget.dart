@@ -49,10 +49,30 @@ class _CollectionListWidgetState extends State<CollectionListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GridListWidget(
-      dataList: _collectoinList,
-      itemCount: _collectoinList.length,
+    return ListView(
       controller: _controller,
+      children: [
+        const CustomText(
+          text: 'Collections',
+          fontSize: 30,
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.only(left: 7, top: 10, bottom: 12),
+        ),
+        const CustomText(
+          text:
+              'Explore the world through collections of beautiful photos free to use under the',
+          fontSize: 15,
+          padding: EdgeInsets.only(left: 7, bottom: 17),
+          alignment: Alignment.centerLeft,
+          overflow: TextOverflow.visible,
+        ),
+        GridListWidget(
+          dataList: _collectoinList,
+          itemCount: _collectoinList.length,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+        ),
+      ],
     );
   }
 }

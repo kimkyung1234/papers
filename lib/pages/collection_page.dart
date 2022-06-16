@@ -7,11 +7,7 @@ class CollectionPage extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
-        child: Column(
-          children: [
-            Expanded(child: CollectionListWidget()),
-          ],
-        ),
+        child: CollectionListWidget(),
       ),
     );
   }
