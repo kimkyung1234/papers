@@ -4,6 +4,8 @@ import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+// ignore: depend_on_referenced_packages
+import 'package:intl/intl.dart';
 
 class TopicPhotoListWidget extends StatefulWidget {
   final String topicId;
@@ -78,11 +80,17 @@ class _TopicPhotoListWidgetState extends State<TopicPhotoListWidget> {
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 7, top: 15, bottom: 12),
         ),
+        IconTextWidget(
+          text:
+              'Created on ${DateFormat.yMMMd().format(DateTime.parse(topic.publishedAt!))}',
+          textColor: theme.textColor!,
+          icon: Icons.calendar_month,
+        ),
         CustomText(
           text: topic.description ?? '',
           fontSize: 15,
           textColor: theme.textColor!,
-          padding: const EdgeInsets.only(left: 7, bottom: 17),
+          padding: const EdgeInsets.only(left: 7, bottom: 17, top: 12),
           alignment: Alignment.centerLeft,
           overflow: TextOverflow.visible,
         ),
