@@ -14,4 +14,4 @@ export 'list/helper/list_helper_widget.dart';
 export 'list/helper/search_list_widget.dart';
 export 'list/helper/user_like_list_widget.dart';
 export 'list/helper/user_photo_list_widget.dart';
-export 'list/gird_list_widget.dart';
+export 'list/collection_gird_list_widget.dart';

@@ -5,14 +5,14 @@ import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-class GridListWidget extends StatelessWidget {
+class CollectionGridListWidget extends StatelessWidget {
   final List<dynamic> dataList;
   final int itemCount;
   final ScrollController? controller;
   final bool shrinkWrap;
   final ScrollPhysics? physics;
 
-  GridListWidget({
+  CollectionGridListWidget({
     super.key,
     required this.dataList,
     required this.itemCount,
@@ -55,7 +55,7 @@ class GridListWidget extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
                 color: theme.cardColor,
-                borderRadius: BorderRadius.all(Radius.circular(5))),
+                borderRadius: const BorderRadius.all(Radius.circular(5))),
             child: Column(
               children: [
                 SizedBox(

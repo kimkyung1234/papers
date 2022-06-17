@@ -73,7 +73,7 @@ class _CollectionListWidgetState extends State<CollectionListWidget> {
           alignment: Alignment.centerLeft,
           overflow: TextOverflow.visible,
         ),
-        GridListWidget(
+        CollectionGridListWidget(
           dataList: _collectoinList,
           itemCount: _collectoinList.length,
           physics: const NeverScrollableScrollPhysics(),
