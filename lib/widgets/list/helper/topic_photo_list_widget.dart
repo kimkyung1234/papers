@@ -78,11 +78,11 @@ class _TopicPhotoListWidgetState extends State<TopicPhotoListWidget> {
           fontSize: 30,
           textColor: theme.textColor!,
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.only(left: 7, top: 15, bottom: 12),
+          padding: const EdgeInsets.only(left: 7, top: 15, bottom: 14),
         ),
         IconTextWidget(
           text:
-              'Created on ${DateFormat.yMMMd().format(DateTime.parse(topic.publishedAt!))}',
+              'Published at ${DateFormat.yMMMd().format(DateTime.parse(topic.publishedAt!))}',
           textColor: theme.textColor!,
           icon: Icons.calendar_month,
         ),
@@ -90,7 +90,7 @@ class _TopicPhotoListWidgetState extends State<TopicPhotoListWidget> {
           text: topic.description ?? '',
           fontSize: 15,
           textColor: theme.textColor!,
-          padding: const EdgeInsets.only(left: 7, bottom: 17, top: 12),
+          padding: const EdgeInsets.only(left: 7, bottom: 17, top: 14),
           alignment: Alignment.centerLeft,
           overflow: TextOverflow.visible,
         ),
