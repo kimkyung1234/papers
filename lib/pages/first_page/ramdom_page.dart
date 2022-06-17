@@ -3,7 +3,14 @@ import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-class FirstPage extends StatelessWidget {
+class RandomPage extends StatelessWidget {
+  final PageController controller;
+
+  const RandomPage({
+    super.key,
+    required this.controller,
+  });
+
   @override
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
@@ -22,7 +29,20 @@ class FirstPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10),
               fontWeight: FontWeight.bold,
             ),
-            RandomCardWidget()
+            RandomCardWidget(),
+            IconButton(
+              splashRadius: 15,
+              icon: const Icon(
+                Icons.keyboard_arrow_down,
+                color: Colors.grey,
+              ),
+              onPressed: () {
+                controller.nextPage(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.ease,
+                );
+              },
+            ),
           ],
         ),
       ),

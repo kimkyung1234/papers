@@ -14,6 +14,7 @@ class SettingPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
         child: ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
             CustomText(
               text: 'Settings',
@@ -65,7 +66,7 @@ Widget _settingMenu({
             children: [
               CustomText(
                 text: hintText,
-                fontSize: 17,
+                fontSize: 14,
                 textColor: Colors.grey,
                 padding: const EdgeInsets.only(right: 15),
               ),
