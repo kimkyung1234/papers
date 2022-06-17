@@ -8,11 +8,17 @@ import 'package:provider/provider.dart';
 class UserInfoWidget extends StatelessWidget {
   final User userData;
   final bool tap;
+  final double leftPadding;
+  final double profileImageSize;
+  final double userNameTextSize;
 
   const UserInfoWidget({
     super.key,
     required this.userData,
     this.tap = true,
+    this.leftPadding = 18,
+    this.profileImageSize = 40,
+    this.userNameTextSize = 17,
   });
 
   @override
@@ -35,23 +41,23 @@ class UserInfoWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.width * 0.65,
         child: Row(
           children: [
-            const SizedBox(width: 18),
+            SizedBox(width: leftPadding),
             SizedBox(
-              height: 40,
+              height: profileImageSize,
               child: carryImageWidget(
                 url: userData.smallProfileImage!,
                 radius: 100,
-                height: 40,
+                height: profileImageSize,
               ),
             ),
-            const SizedBox(width: 18),
+            SizedBox(width: leftPadding),
             Flexible(
               flex: 1,
               child: CustomText(
                 text: userData.userName!,
                 textColor: theme.textColor!,
                 alignment: Alignment.bottomLeft,
-                fontSize: 17,
+                fontSize: userNameTextSize,
               ),
             ),
           ],

@@ -10,6 +10,7 @@ class Topic {
     this.visibility,
     this.totalPhotos,
     this.status,
+    this.owner,
     this.coverPhoto,
   });
 
@@ -21,7 +22,7 @@ class Topic {
   String? visibility;
   int? totalPhotos;
   String? status;
-  // User? user;
+  User? owner;
   Photo? coverPhoto;
 
   factory Topic.fromJson(Map<String, dynamic> json) => Topic(
@@ -33,6 +34,7 @@ class Topic {
         visibility: json['visibility'],
         totalPhotos: json['total_photos'],
         status: json['status'],
+        owner: User.fromJson(json['owners'][0]),
         coverPhoto: Photo.fromJson(json['cover_photo']),
       );
 
@@ -45,6 +47,7 @@ class Topic {
         'visibility': visibility,
         'totalPhotos': totalPhotos,
         'status': status,
+        'owner': owner,
         'coverPhoto': coverPhoto,
       };
 }
