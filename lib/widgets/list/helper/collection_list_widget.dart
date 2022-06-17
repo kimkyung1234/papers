@@ -66,7 +66,7 @@ class _CollectionListWidgetState extends State<CollectionListWidget> {
         ),
         CustomText(
           text:
-              'Explore the world through collections of beautiful photos free to use under the',
+              'Explore the world through collections of beautiful photos free to use',
           fontSize: 15,
           textColor: theme.textColor!,
           padding: const EdgeInsets.only(left: 7, bottom: 17),

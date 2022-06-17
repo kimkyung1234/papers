@@ -33,7 +33,7 @@ class Topic {
         visibility: json['visibility'],
         totalPhotos: json['total_photos'],
         status: json['status'],
-        coverPhoto: Photo.fromJson(json['coverPhoto']),
+        coverPhoto: Photo.fromJson(json['cover_photo']),
       );
 
   Map<String, dynamic> toJson() => {
