@@ -1,0 +1,19 @@
+import 'dart:convert';
+
+import 'package:http/http.dart';
+import 'package:papers/api_key.dart';
+import 'package:papers/models/models.dart';
+
+class TopicApiHelper {
+  Future<Topic> getTopics() async {
+    final response = await get(
+      Uri.parse('https://api.unsplash.com/topics?client_id=${ApiKey.apiKey}'),
+    );
+
+    if (response.statusCode == 200) {
+      return Topic.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Error loading');
+    }
+  }
+}
