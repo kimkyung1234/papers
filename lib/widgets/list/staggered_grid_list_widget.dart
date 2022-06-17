@@ -11,6 +11,8 @@ class StaggeredGridListWidget extends StatelessWidget {
   final bool tap;
   final bool tapUser;
   final ScrollController? controller;
+  final ScrollPhysics? physics;
+  final bool shrinkWrap;
 
   StaggeredGridListWidget({
     super.key,
@@ -19,6 +21,8 @@ class StaggeredGridListWidget extends StatelessWidget {
     this.tap = true,
     this.tapUser = true,
     this.controller,
+    this.physics,
+    this.shrinkWrap = false,
   });
 
   @override
@@ -27,6 +31,8 @@ class StaggeredGridListWidget extends StatelessWidget {
     var theme = themeMode.getThemeData;
 
     return MasonryGridView.count(
+      physics: physics,
+      shrinkWrap: shrinkWrap,
       controller: controller,
       crossAxisCount: 2,
       crossAxisSpacing: 10,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/pages/pages.dart';
 import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -40,22 +41,40 @@ class TopicGridListWidget extends StatelessWidget {
         Topic data = dataList[index];
 
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TopicDetailPage(
+                  topicId: data.id!,
+                  data: data,
+                ),
+              ),
+            );
+          },
           child: Container(
             decoration: BoxDecoration(
                 color: theme.cardColor,
                 borderRadius: const BorderRadius.all(Radius.circular(5))),
             child: Column(
               children: [
-                SizedBox(
-                  height: 200,
-                  width: double.infinity,
-                  child: carryImageWidget(
-                    url: data.coverPhoto!.urls!.regularUrl!,
-                    boxFit: BoxFit.cover,
-                    radius: 5,
-                    height: 150,
-                  ),
+                Stack(
+                  children: [
+                    SizedBox(
+                      height: 200,
+                      width: double.infinity,
+                      child: carryImageWidget(
+                        url: data.coverPhoto!.urls!.regularUrl!,
+                        boxFit: BoxFit.cover,
+                        radius: 5,
+                        height: 150,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: statusWidget(status: data.status!),
+                    ),
+                  ],
                 ),
                 CustomText(
                   text: data.title!,
