@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class RandomCardWidget extends StatelessWidget {
   PhotoApiHelper photoApiHelper = PhotoApiHelper();
 
   @override
   Widget build(BuildContext context) {
+    var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var theme = themeMode.getThemeData;
+
     return FutureBuilder<Photo>(
       future: photoApiHelper.getRandomPhoto(),
       builder: (_, snapshot) {
@@ -24,7 +29,13 @@ class RandomCardWidget extends StatelessWidget {
                 SizedBox(
                   height: 500,
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      photoDetailDialog(
+                        context: context,
+                        photoData: data,
+                        theme: theme,
+                      );
+                    },
                     child: Stack(
                       fit: StackFit.expand,
                       children: [
