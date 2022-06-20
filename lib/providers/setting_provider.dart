@@ -9,4 +9,13 @@ class SettingProvider with ChangeNotifier {
     _imageFit = imageFit;
     notifyListeners();
   }
+
+  BoxFit _boxFit = BoxFit.fitWidth;
+
+  BoxFit get getBoxFit => _boxFit;
+
+  void setBoxFit({required BoxFit boxFit}) {
+    _boxFit = boxFit;
+    notifyListeners();
+  }
 }

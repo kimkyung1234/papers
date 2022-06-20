@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/pages/pages.dart';
 import 'package:papers/providers/providers.dart';
 import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
@@ -21,41 +22,50 @@ class RandomCardWidget extends StatelessWidget {
         }
 
         final data = snapshot.data!;
-        return Transform.scale(
-          scale: 0.9,
-          child: Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 500,
-                  child: GestureDetector(
-                    onTap: () {
-                      photoDetailDialog(
-                        context: context,
-                        photoData: data,
-                        theme: theme,
-                      );
-                    },
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        carryImageWidget(
-                          url: data.urls!.regularUrl ?? '',
-                          boxFit: BoxFit.cover,
-                          height: 500,
-                        ),
-                      ],
-                    ),
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
+              child: SizedBox(
+                height: 480,
+                child: GestureDetector(
+                  onTap: () {
+                    // photoDetailDialog(
+                    //   context: context,
+                    //   photoData: data,
+                    //   theme: theme,
+                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PhotoDetailPage(data: data),
+                      ),
+                    );
+                  },
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      carryImageWidget(
+                        url: data.urls!.regularUrl ?? '',
+                        boxFit: BoxFit.cover,
+                        height: 480,
+                        radius: 0,
+                      ),
+                    ],
                   ),
                 ),
-                const SizedBox(height: 18),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: UserInfoWidget(userData: data.user!),
-                )
-              ],
+              ),
             ),
-          ),
+            const SizedBox(height: 10),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: UserInfoWidget(
+                userData: data.user!,
+                profileImageSize: 30,
+                userNameTextSize: 13,
+              ),
+            )
+          ],
         );
       },
     );

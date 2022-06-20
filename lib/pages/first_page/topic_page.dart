@@ -29,6 +29,7 @@ class TopicPage extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: IconButton(
                 splashRadius: 15,
+                tooltip: 'Random Photo',
                 icon: const Icon(
                   Icons.keyboard_arrow_up,
                   color: Colors.grey,
