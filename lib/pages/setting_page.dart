@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var imageFit = Provider.of<SettingProvider>(context);
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
@@ -36,6 +37,16 @@ class SettingPage extends StatelessWidget {
                 },
               ),
             ),
+            _settingMenu(
+              text: 'Image Fit',
+              textColor: theme.textColor!,
+              widget: TextButton(
+                child: Text(imageFit.getImageFit),
+                onPressed: () {
+                  _showPicker(context, imageFit);
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -53,7 +64,7 @@ Widget _settingMenu({
   return GestureDetector(
     onTap: onTap,
     child: Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -74,6 +85,30 @@ Widget _settingMenu({
             ],
           ),
         ],
+      ),
+    ),
+  );
+}
+
+void _showPicker(BuildContext context, SettingProvider imageFit) {
+  showCupertinoModalPopup(
+    context: context,
+    builder: (_) => SizedBox(
+      height: 250,
+      child: CupertinoPicker(
+        backgroundColor: Colors.white,
+        itemExtent: 30,
+        scrollController: FixedExtentScrollController(
+            initialItem: imageFit.getImageFit == 'Filled' ? 0 : 1),
+        children: const [
+          Text('Filled'),
+          Text('Padding'),
+        ],
+        onSelectedItemChanged: (value) {
+          // ignore: avoid_print
+          print(value);
+          imageFit.setImageFit(imageFit: value == 0 ? 'Filled' : 'Padding');
+        },
       ),
     ),
   );

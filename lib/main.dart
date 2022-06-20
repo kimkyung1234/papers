@@ -8,6 +8,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider<SettingProvider>(
+            create: (_) => SettingProvider()),
         ChangeNotifierProvider<ThemeChangerProvider>(
             create: (_) => ThemeChangerProvider()),
         ChangeNotifierProvider<SearchProvider>(create: (_) => SearchProvider()),

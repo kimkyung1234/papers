@@ -27,16 +27,18 @@ class StaggeredGridListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var imageFit = Provider.of<SettingProvider>(context);
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
+    bool isFilled = imageFit.getImageFit == 'Filled';
 
     return MasonryGridView.count(
       physics: physics,
       shrinkWrap: shrinkWrap,
       controller: controller,
       crossAxisCount: 2,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
+      crossAxisSpacing: isFilled ? 0 : 10,
+      mainAxisSpacing: isFilled ? 0 : 10,
       itemCount: itemCount,
       itemBuilder: (context, index) {
         Photo data = dataList[index];
@@ -53,15 +55,18 @@ class StaggeredGridListWidget extends StatelessWidget {
             }
           },
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 color: Colors.transparent,
-                borderRadius: BorderRadius.all(Radius.circular(15))),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(isFilled ? 0 : 15))),
             child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(15)),
+              borderRadius:
+                  BorderRadius.all(Radius.circular(isFilled ? 0 : 15)),
               child: carryImageWidget(
                 url: data.urls!.smallUrl ?? '',
                 boxFit: BoxFit.fitHeight,
                 height: 200,
+                radius: isFilled ? 0 : 20,
               ),
             ),
           ),
