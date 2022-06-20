@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:papers/models/models.dart';
 import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -43,7 +44,7 @@ class SettingPage extends StatelessWidget {
               widget: TextButton(
                 child: Text(imageFit.getImageFit),
                 onPressed: () {
-                  _showPicker(context, imageFit);
+                  _showPicker(context, imageFit, theme);
                 },
               ),
             ),
@@ -90,19 +91,23 @@ Widget _settingMenu({
   );
 }
 
-void _showPicker(BuildContext context, SettingProvider imageFit) {
+void _showPicker(
+  BuildContext context,
+  SettingProvider imageFit,
+  ColorTheme theme,
+) {
   showCupertinoModalPopup(
     context: context,
     builder: (_) => SizedBox(
       height: 250,
       child: CupertinoPicker(
-        backgroundColor: Colors.white,
+        backgroundColor: theme.backgroundColor,
         itemExtent: 30,
         scrollController: FixedExtentScrollController(
             initialItem: imageFit.getImageFit == 'Filled' ? 0 : 1),
-        children: const [
-          Text('Filled'),
-          Text('Padding'),
+        children: [
+          Text('Filled', style: TextStyle(color: theme.textColor)),
+          Text('Padding', style: TextStyle(color: theme.textColor)),
         ],
         onSelectedItemChanged: (value) {
           // ignore: avoid_print
