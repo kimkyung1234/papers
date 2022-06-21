@@ -25,7 +25,9 @@ class BottomPanelWidget extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       margin: const EdgeInsets.all(20),
-      child: Column(
+      child: ListView(
+        padding: const EdgeInsets.only(top: 0),
+        physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(height: 18),
           Align(
@@ -43,6 +45,20 @@ class BottomPanelWidget extends StatelessWidget {
             textColor: theme.textColor!,
             icon: Icons.calendar_month,
           ),
+          data.exif == null
+              ? const SizedBox()
+              : Column(
+                  children: [
+                    const SizedBox(height: 10),
+                    IconTextWidget(
+                      text: '${data.location!.title}',
+                      textColor: theme.textColor!,
+                      icon: Icons.pin_drop,
+                    ),
+                    const SizedBox(height: 10),
+                    CameraInfoWidget(exif: data.exif!),
+                  ],
+                ),
           data.description == null
               ? const SizedBox()
               : Padding(

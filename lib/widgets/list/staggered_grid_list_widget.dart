@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:papers/models/models.dart';
+import 'package:papers/pages/pages.dart';
 import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -46,11 +47,17 @@ class StaggeredGridListWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             if (tap == true) {
-              photoDetailDialog(
-                context: context,
-                photoData: data,
-                tap: tapUser,
-                theme: theme,
+              // photoDetailDialog(
+              //   context: context,
+              //   photoData: data,
+              //   tap: tapUser,
+              //   theme: theme,
+              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PhotoDetailPage(data: data),
+                ),
               );
             }
           },
