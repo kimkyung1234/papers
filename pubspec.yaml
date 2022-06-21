@@ -33,6 +33,7 @@ flutter:
 
   assets:
       - assets/logo.png
+      - assets/logo2.png
 
   fonts: 
     - family: Comfortaa
