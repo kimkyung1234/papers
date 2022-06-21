@@ -17,13 +17,13 @@ class Exif {
   int? iso;
 
   factory Exif.fromJson(Map<String, dynamic> json) => Exif(
-        make: json['make'],
-        model: json['model'],
+        make: json['make'] ?? 'No data',
+        model: json['model'] ?? 'No data',
         name: json['name'],
-        exposureTime: json['exposure_time'],
-        aperture: json['aperture'],
-        focalLength: json['focal_length'],
-        iso: json['iso'],
+        exposureTime: json['exposure_time'] ?? 'No data',
+        aperture: json['aperture'] ?? 'No data',
+        focalLength: json['focal_length'] ?? 'No data',
+        iso: json['iso'] ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

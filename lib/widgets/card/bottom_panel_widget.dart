@@ -31,7 +31,13 @@ class BottomPanelWidget extends StatelessWidget {
         padding: const EdgeInsets.only(top: 0),
         physics: const BouncingScrollPhysics(),
         children: [
-          const SizedBox(height: 18),
+          const SizedBox(height: 28),
+          const Center(
+              child: Icon(
+            Icons.keyboard_arrow_down,
+            color: Colors.grey,
+          )),
+          const SizedBox(height: 25),
           Align(
             alignment: Alignment.centerLeft,
             child: UserInfoWidget(userData: data.user!, tap: tap),
