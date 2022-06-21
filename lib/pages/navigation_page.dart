@@ -19,6 +19,8 @@ class NavigationPage extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    themeMode.theme();
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: themeMode.getThemeDark
           ? SystemUiOverlayStyle.light

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingProvider with ChangeNotifier {
   String _imageFit = 'Padding';
@@ -8,6 +9,11 @@ class SettingProvider with ChangeNotifier {
   void setImageFit({required String imageFit}) {
     _imageFit = imageFit;
     notifyListeners();
+  }
+
+  Future<void> fit() async {
+    final prefs = await SharedPreferences.getInstance();
+    _imageFit = prefs.getString('fit') ?? 'Padding';
   }
 
   BoxFit _boxFit = BoxFit.fitWidth;

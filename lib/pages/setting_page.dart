@@ -4,6 +4,7 @@ import 'package:papers/models/models.dart';
 import 'package:papers/providers/providers.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingPage extends StatelessWidget {
   @override
@@ -35,6 +36,11 @@ class SettingPage extends StatelessWidget {
                   themeMode.getThemeDark
                       ? themeMode.setLight()
                       : themeMode.setDark();
+
+                  SharedPreferences sharedPreferences =
+                      await SharedPreferences.getInstance();
+
+                  sharedPreferences.setBool('theme', value);
                 },
               ),
             ),
@@ -109,10 +115,15 @@ void _showPicker(
           Text('Filled', style: TextStyle(color: theme.textColor)),
           Text('Padding', style: TextStyle(color: theme.textColor)),
         ],
-        onSelectedItemChanged: (value) {
+        onSelectedItemChanged: (value) async {
           // ignore: avoid_print
           print(value);
           imageFit.setImageFit(imageFit: value == 0 ? 'Filled' : 'Padding');
+
+          SharedPreferences sharedPreferences =
+              await SharedPreferences.getInstance();
+
+          sharedPreferences.setString('fit', value == 0 ? 'Filled' : 'Padding');
         },
       ),
     ),

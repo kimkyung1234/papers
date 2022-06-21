@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeChangerProvider with ChangeNotifier {
   bool _themeDark = false;
@@ -16,6 +17,13 @@ class ThemeChangerProvider with ChangeNotifier {
   }
 
   ColorTheme get getThemeData => _themeDark ? darkTheme : lightTheme;
+
+  Future<void> theme() async {
+    final prefs = await SharedPreferences.getInstance();
+    _themeDark = prefs.getBool('theme') ?? false;
+    print('1');
+    print(_themeDark);
+  }
 }
 
 final lightTheme = ColorTheme(

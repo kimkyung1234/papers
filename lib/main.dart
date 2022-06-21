@@ -16,7 +16,7 @@ void main() {
         ChangeNotifierProvider<PageCountProvider>(
             create: (_) => PageCountProvider())
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -27,6 +27,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
+    var setting = Provider.of<SettingProvider>(context);
+
+    themeMode.theme();
+    setting.fit();
 
     return MaterialApp(
       theme: ThemeData(
