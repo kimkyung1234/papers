@@ -18,4 +18,18 @@ class SettingProvider with ChangeNotifier {
     _boxFit = boxFit;
     notifyListeners();
   }
+
+  String? _imageUrl;
+
+  String? get getImageUrl => _imageUrl;
+
+  void setImageUrl({required String url}) {
+    _imageUrl = url;
+    notifyListeners();
+  }
+
+  void reset() {
+    _boxFit = BoxFit.fitWidth;
+    _imageUrl = null;
+  }
 }

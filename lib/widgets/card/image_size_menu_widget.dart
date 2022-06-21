@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
 import 'package:papers/providers/providers.dart';
-import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
-class PopupMenu extends StatelessWidget {
+class ImageSizeMenuWidget extends StatelessWidget {
   final Photo data;
 
-  const PopupMenu({super.key, required this.data});
+  const ImageSizeMenuWidget({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingProvider>(context);
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
+
+    Urls urls = data.urls!;
 
     return PopupMenuButton<int>(
       color: theme.cardColor,
@@ -24,31 +25,53 @@ class PopupMenu extends StatelessWidget {
         PopupMenuItem(
           value: 1,
           child: Text(
-            'Cover',
+            'Small',
             style: TextStyle(color: theme.textColor),
           ),
           onTap: () {
-            provider.setBoxFit(boxFit: BoxFit.cover);
+            provider.setImageUrl(url: urls.smallUrl!);
           },
         ),
         PopupMenuItem(
           value: 2,
           child: Text(
-            'FitWidth',
+            'Medium',
             style: TextStyle(color: theme.textColor),
           ),
           onTap: () {
-            provider.setBoxFit(boxFit: BoxFit.fitWidth);
+            provider.setImageUrl(url: urls.regularUrl!);
           },
         ),
         PopupMenuItem(
           value: 2,
-          child: ImageSizeMenuWidget(data: data),
+          child: Text(
+            'Large',
+            style: TextStyle(color: theme.textColor),
+          ),
+          onTap: () {
+            provider.setImageUrl(url: urls.rawUrl!);
+          },
+        ),
+        PopupMenuItem(
+          value: 2,
+          child: Text(
+            'Original Size',
+            style: TextStyle(color: theme.textColor),
+          ),
+          onTap: () {
+            provider.setImageUrl(url: urls.fullUrl!);
+          },
         ),
       ],
-      icon: Icon(
-        Icons.layers_outlined,
-        color: theme.textColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Image Size',
+            style: TextStyle(color: theme.textColor),
+          ),
+          Icon(Icons.keyboard_arrow_down, color: theme.textColor),
+        ],
       ),
     );
   }

@@ -28,6 +28,7 @@ class StaggeredGridListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingProvider>(context);
     var imageFit = Provider.of<SettingProvider>(context);
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
@@ -53,6 +54,7 @@ class StaggeredGridListWidget extends StatelessWidget {
               //   tap: tapUser,
               //   theme: theme,
               // );
+              provider.setImageUrl(url: data.urls!.regularUrl!);
               Navigator.push(
                 context,
                 MaterialPageRoute(

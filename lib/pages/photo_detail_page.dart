@@ -39,6 +39,7 @@ class PhotoDetailPage extends StatelessWidget {
             ),
           ),
           onPressed: () {
+            provider.reset();
             Navigator.pop(context);
           },
         ),
@@ -46,7 +47,7 @@ class PhotoDetailPage extends StatelessWidget {
           CircleAvatar(
             radius: 20,
             backgroundColor: Colors.white.withOpacity(0.3),
-            child: PopupMenu(),
+            child: PopupMenu(data: data),
           ),
           const SizedBox(width: 15)
         ],
@@ -62,7 +63,7 @@ class PhotoDetailPage extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             carryImageWidget(
-              url: data.urls!.regularUrl ?? '',
+              url: provider.getImageUrl!, //data.urls!.regularUrl ?? '',
               boxFit: provider.getBoxFit,
               height: 480,
               radius: 0,

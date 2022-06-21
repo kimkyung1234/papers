@@ -63,7 +63,8 @@ class BottomPanelWidget extends StatelessWidget {
                       textColor: theme.textColor!,
                       icon: Icons.pin_drop,
                     ),
-                    data.location!.title! == 'No data'
+                    data.location!.title! == 'No data' ||
+                            data.location!.latitude == null
                         ? const SizedBox()
                         : Padding(
                             padding: const EdgeInsets.all(10),

@@ -13,6 +13,7 @@ class RandomCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
+    var provider = Provider.of<SettingProvider>(context);
 
     return FutureBuilder<Photo>(
       future: photoApiHelper.getRandomPhoto(),
@@ -35,6 +36,7 @@ class RandomCardWidget extends StatelessWidget {
                     //   photoData: data,
                     //   theme: theme,
                     // );
+                    provider.setImageUrl(url: data.urls!.regularUrl!);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
