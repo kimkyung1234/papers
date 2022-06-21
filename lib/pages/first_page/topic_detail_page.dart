@@ -40,12 +40,9 @@ class TopicDetailPage extends StatelessWidget {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        child: TopicPhotoListWidget(
-          topicId: topicId,
-          data: data,
-        ),
+      body: TopicPhotoListWidget(
+        topicId: topicId,
+        data: data,
       ),
     );
   }

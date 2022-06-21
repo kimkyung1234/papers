@@ -17,6 +17,8 @@ class UserDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
+    var imageFit = Provider.of<SettingProvider>(context);
+    bool isFilled = imageFit.getImageFit == 'Filled';
 
     return DefaultTabController(
       length: 2,
@@ -79,15 +81,17 @@ class UserDetailPage extends StatelessWidget {
               child: TabBarView(
                 children: [
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 15, right: 15),
+                    padding: isFilled
+                        ? const EdgeInsets.only(top: 10)
+                        : const EdgeInsets.only(top: 10, left: 10, right: 10),
                     child: UserPhotoListWidget(
                       userData: userData,
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 15, right: 15),
+                    padding: isFilled
+                        ? const EdgeInsets.only(top: 10)
+                        : const EdgeInsets.only(top: 10, left: 10, right: 10),
                     child: UserLikeListWidget(
                       userData: userData,
                     ),

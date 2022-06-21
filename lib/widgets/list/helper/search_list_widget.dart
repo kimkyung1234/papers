@@ -58,6 +58,8 @@ class _SearchListWidgetState extends State<SearchListWidget> {
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
+    var imageFit = Provider.of<SettingProvider>(context);
+    bool isFilled = imageFit.getImageFit == 'Filled';
 
     if (_photoDataList.isEmpty) {
       return Center(
@@ -68,25 +70,28 @@ class _SearchListWidgetState extends State<SearchListWidget> {
         ),
       );
     }
-    return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10),
-      child: Column(
-        children: [
-          CustomText(
-            text: 'Result of "${widget.inputText}"',
-            textColor: theme.textColor!,
-            alignment: Alignment.centerLeft,
-          ),
-          const SizedBox(height: 10),
-          Expanded(
+    return Column(
+      children: [
+        CustomText(
+          text: 'Result of "${widget.inputText}"',
+          textColor: theme.textColor!,
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 10),
+        ),
+        const SizedBox(height: 10),
+        Expanded(
+          child: Padding(
+            padding: isFilled
+                ? const EdgeInsets.all(0)
+                : const EdgeInsets.only(left: 10, right: 10),
             child: StaggeredGridListWidget(
               dataList: _photoDataList,
               itemCount: _photoDataList.length,
               controller: _controller,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -18,6 +18,8 @@ class CollectionDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
+    var imageFit = Provider.of<SettingProvider>(context);
+    bool isFilled = imageFit.getImageFit == 'Filled';
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -40,7 +42,9 @@ class CollectionDetailPage extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: isFilled
+            ? const EdgeInsets.all(0)
+            : const EdgeInsets.only(left: 10, right: 10),
         child: CollectionPhotoListWidget(
           collectionId: collectionId,
         ),

@@ -68,17 +68,23 @@ class _TopicPhotoListWidgetState extends State<TopicPhotoListWidget> {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
     var topic = widget.data;
+    var imageFit = Provider.of<SettingProvider>(context);
+    bool isFilled = imageFit.getImageFit == 'Filled';
 
     return ListView(
       controller: _controller,
       children: [
-        statusWidget(status: topic.status!),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: statusWidget(status: topic.status!),
+        ),
         CustomText(
           text: topic.title!,
           fontSize: 30,
           textColor: theme.textColor!,
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.only(left: 7, top: 15, bottom: 14),
+          padding:
+              const EdgeInsets.only(left: 17, top: 15, bottom: 14, right: 10),
         ),
         IconTextWidget(
           text:
@@ -90,20 +96,26 @@ class _TopicPhotoListWidgetState extends State<TopicPhotoListWidget> {
           text: topic.description ?? '',
           fontSize: 15,
           textColor: theme.textColor!,
-          padding: const EdgeInsets.only(left: 7, bottom: 17, top: 14),
+          padding:
+              const EdgeInsets.only(left: 17, bottom: 17, top: 14, right: 10),
           alignment: Alignment.centerLeft,
           overflow: TextOverflow.visible,
         ),
         UserInfoWidget(
           userData: topic.owner!,
-          leftPadding: 10,
+          leftPadding: 17,
         ),
         const SizedBox(height: 20),
-        StaggeredGridListWidget(
-          dataList: _photoDataList,
-          itemCount: _photoDataList.length,
-          physics: const NeverScrollableScrollPhysics(),
-          shrinkWrap: true,
+        Padding(
+          padding: isFilled
+              ? const EdgeInsets.all(0)
+              : const EdgeInsets.only(left: 10, right: 10),
+          child: StaggeredGridListWidget(
+            dataList: _photoDataList,
+            itemCount: _photoDataList.length,
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+          ),
         ),
       ],
     );
