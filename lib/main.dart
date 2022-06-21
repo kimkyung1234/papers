@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
             : SystemUiOverlayStyle.dark,
       )),
       debugShowCheckedModeBanner: false,
-      home: NavigationPage(),
+      home: const SplashPage(),
     );
   }
 }

@@ -9,4 +9,5 @@ export 'navigation_page.dart';
 export 'photo_detail_page.dart';
 export 'search_page.dart';
 export 'setting_page.dart';
+export 'splash_page.dart';
 export 'user_detail_page.dart';
