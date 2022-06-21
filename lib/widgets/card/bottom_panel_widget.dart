@@ -8,10 +8,12 @@ import 'package:provider/provider.dart';
 
 class BottomPanelWidget extends StatelessWidget {
   final Photo data;
+  final bool tap;
 
   const BottomPanelWidget({
     super.key,
     required this.data,
+    this.tap = true,
   });
 
   @override
@@ -32,7 +34,7 @@ class BottomPanelWidget extends StatelessWidget {
           const SizedBox(height: 18),
           Align(
             alignment: Alignment.centerLeft,
-            child: UserInfoWidget(userData: data.user!),
+            child: UserInfoWidget(userData: data.user!, tap: tap),
           ),
           const SizedBox(height: 18),
           data.exif == null

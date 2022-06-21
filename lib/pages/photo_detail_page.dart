@@ -8,11 +8,9 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class PhotoDetailPage extends StatelessWidget {
   final Photo data;
+  final bool tap;
 
-  const PhotoDetailPage({
-    super.key,
-    required this.data,
-  });
+  const PhotoDetailPage({super.key, required this.data, this.tap = true});
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +53,10 @@ class PhotoDetailPage extends StatelessWidget {
       ),
       body: SlidingUpPanel(
         renderPanelSheet: false,
-        panel: BottomPanelWidget(data: data),
+        panel: BottomPanelWidget(
+          data: data,
+          tap: tap,
+        ),
         collapsed: _floatingCollapsed(theme),
         body: Stack(
           fit: StackFit.expand,

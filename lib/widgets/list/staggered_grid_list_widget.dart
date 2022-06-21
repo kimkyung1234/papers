@@ -56,7 +56,10 @@ class StaggeredGridListWidget extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PhotoDetailPage(data: data),
+                  builder: (context) => PhotoDetailPage(
+                    data: data,
+                    tap: tapUser,
+                  ),
                 ),
               );
             }
