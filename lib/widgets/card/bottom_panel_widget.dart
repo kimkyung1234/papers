@@ -29,7 +29,7 @@ class BottomPanelWidget extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       child: ListView(
         padding: const EdgeInsets.only(top: 0),
-        physics: const BouncingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         children: [
           const SizedBox(height: 28),
           const Center(
@@ -63,6 +63,11 @@ class BottomPanelWidget extends StatelessWidget {
                       textColor: theme.textColor!,
                       icon: Icons.pin_drop,
                     ),
+                    data.location!.title! == 'No data'
+                        ? const SizedBox()
+                        : Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: MapWidget(location: data.location!)),
                     const SizedBox(height: 10),
                     CameraInfoWidget(exif: data.exif!),
                   ],

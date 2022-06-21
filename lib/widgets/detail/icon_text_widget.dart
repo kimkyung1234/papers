@@ -23,13 +23,16 @@ class IconTextWidget extends StatelessWidget {
           color: Colors.grey,
           size: 18,
         ),
-        CustomText(
-          text: text,
-          textColor: textColor,
-          fontSize: 12,
-          alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.only(left: 15, right: 5),
-        ),
+        Flexible(
+          child: CustomText(
+            text: text,
+            textColor: textColor,
+            fontSize: 12,
+            alignment: Alignment.centerLeft,
+            padding: const EdgeInsets.only(left: 15, right: 5),
+            overflow: TextOverflow.fade,
+          ),
+        )
       ],
     );
   }

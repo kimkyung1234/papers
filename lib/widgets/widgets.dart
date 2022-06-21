@@ -1,5 +1,6 @@
 export 'detail/camera_info_widget.dart';
 export 'detail/icon_text_widget.dart';
+export 'detail/map_widget.dart';
 export 'detail/photo_info_widget.dart';
 export 'detail/photo_detail_dialog.dart';
 export 'card/bottom_panel_widget.dart';
