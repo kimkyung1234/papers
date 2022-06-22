@@ -1,8 +1,8 @@
 # App Screen
 <p align="center" width="100%">
-    <img width="30%" alt="1" src="https://user-images.githubusercontent.com/71820026/174930825-ffe55b73-6852-41d1-8cb8-74bd574d3992.png">
-    <img width="30%" alt="2" src="https://user-images.githubusercontent.com/71820026/174930957-bc428608-709b-4f6f-b952-b7f0f762c36a.png">
-    <img width="30%" alt="3" src="https://user-images.githubusercontent.com/71820026/174931098-0d3c2011-49e8-4caa-af5e-ccdddfec7fab.png">
+    <img width="20%" alt="1" src="https://user-images.githubusercontent.com/71820026/174930825-ffe55b73-6852-41d1-8cb8-74bd574d3992.png">
+    <img width="20%" alt="2" src="https://user-images.githubusercontent.com/71820026/174930957-bc428608-709b-4f6f-b952-b7f0f762c36a.png">
+    <img width="20%" alt="3" src="https://user-images.githubusercontent.com/71820026/174931098-0d3c2011-49e8-4caa-af5e-ccdddfec7fab.png">
 </p>
 
 
