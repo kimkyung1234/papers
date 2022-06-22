@@ -43,9 +43,7 @@ class BottomPanelWidget extends StatelessWidget {
             child: UserInfoWidget(userData: data.user!, tap: tap),
           ),
           const SizedBox(height: 18),
-          data.exif == null
-              ? const SizedBox()
-              : PhotoInfoWidget(photoData: data),
+          PhotoInfoWidget(photoData: data),
           const SizedBox(height: 18),
           IconTextWidget(
             text:
@@ -53,28 +51,29 @@ class BottomPanelWidget extends StatelessWidget {
             textColor: theme.textColor!,
             icon: Icons.calendar_month,
           ),
-          data.exif == null
-              ? const SizedBox()
-              : Column(
-                  children: [
-                    const SizedBox(height: 10),
-                    IconTextWidget(
-                      text: '${data.location!.title}',
-                      textColor: theme.textColor!,
-                      icon: Icons.pin_drop,
-                    ),
-                    data.location!.title! == 'No data' ||
-                            data.location!.latitude == null
-                        ? const SizedBox()
-                        : Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: MapWidget(location: data.location!)),
-                    const SizedBox(height: 10),
-                    CameraInfoWidget(exif: data.exif!),
-                  ],
-                ),
+          data.location!.title == 'No data'
+              ? const SizedBox.shrink()
+              : Column(children: [
+                  const SizedBox(height: 10),
+                  IconTextWidget(
+                    text: '${data.location!.title}',
+                    textColor: theme.textColor!,
+                    icon: Icons.pin_drop,
+                  ),
+                ]),
+          data.location!.title == 'No data' || data.location!.latitude == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: MapWidget(location: data.location!)),
+          data.exif!.aperture == 'No data'
+              ? const SizedBox.shrink()
+              : Column(children: [
+                  const SizedBox(height: 10),
+                  CameraInfoWidget(exif: data.exif!),
+                ]),
           data.description == null
-              ? const SizedBox()
+              ? const SizedBox.shrink()
               : Padding(
                   padding: const EdgeInsets.only(left: 15, right: 15, top: 25),
                   child: Text(
