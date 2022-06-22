@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:papers/models/models.dart';
 import 'package:papers/pages/pages.dart';
@@ -30,17 +32,23 @@ class RandomCardWidget extends StatelessWidget {
               child: SizedBox(
                 height: 480,
                 child: GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     // photoDetailDialog(
                     //   context: context,
                     //   photoData: data,
                     //   theme: theme,
                     // );
-                    provider.setImageUrl(url: data.urls!.regularUrl!);
+
+                    Photo photoData = await photoApiHelper.getPhotoById(
+                        context: context, id: data.id!);
+
+                    provider.setImageUrl(url: photoData.urls!.regularUrl!);
+
+                    // Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PhotoDetailPage(data: data),
+                        builder: (context) => PhotoDetailPage(data: photoData),
                       ),
                     );
                   },

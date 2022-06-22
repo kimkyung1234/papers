@@ -1,8 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:papers/models/models.dart';
 import 'package:papers/pages/pages.dart';
 import 'package:papers/providers/providers.dart';
+import 'package:papers/services/services.dart';
 import 'package:papers/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +29,8 @@ class StaggeredGridListWidget extends StatelessWidget {
     this.shrinkWrap = false,
   });
 
+  PhotoApiHelper photoApiHelper = PhotoApiHelper();
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingProvider>(context);
@@ -46,7 +51,7 @@ class StaggeredGridListWidget extends StatelessWidget {
         Photo data = dataList[index];
 
         return GestureDetector(
-          onTap: () {
+          onTap: () async {
             if (tap == true) {
               // photoDetailDialog(
               //   context: context,
@@ -54,12 +59,16 @@ class StaggeredGridListWidget extends StatelessWidget {
               //   tap: tapUser,
               //   theme: theme,
               // );
-              provider.setImageUrl(url: data.urls!.regularUrl!);
+              Photo photoData = await photoApiHelper.getPhotoById(
+                  context: context, id: data.id!);
+
+              provider.setImageUrl(url: photoData.urls!.regularUrl!);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => PhotoDetailPage(
-                    data: data,
+                    data: photoData,
                     tap: tapUser,
                   ),
                 ),
