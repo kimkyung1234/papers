@@ -58,7 +58,25 @@ class PopupMenu extends StatelessWidget {
           },
         ),
         PopupMenuItem(
-          value: 2,
+          value: 3,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Contain',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getBoxFit == BoxFit.contain
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
+          ),
+          onTap: () {
+            provider.setBoxFit(boxFit: BoxFit.contain);
+          },
+        ),
+        PopupMenuItem(
+          value: 4,
           child: ImageSizeMenuWidget(data: data),
         ),
       ],

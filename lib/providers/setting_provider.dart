@@ -16,7 +16,7 @@ class SettingProvider with ChangeNotifier {
     _imageFit = prefs.getString('fit') ?? 'Padding';
   }
 
-  BoxFit _boxFit = BoxFit.fitWidth;
+  BoxFit _boxFit = BoxFit.contain;
 
   BoxFit get getBoxFit => _boxFit;
 
