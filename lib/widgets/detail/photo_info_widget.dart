@@ -17,38 +17,49 @@ class PhotoInfoWidget extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double headTextSize;
+    double smallTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      headTextSize = 16;
+      smallTextSize = 18;
+    } else {
+      headTextSize = 12;
+      smallTextSize = 14;
+    }
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomText(
+            CustomText(
               text: 'views',
-              fontSize: 12,
+              fontSize: headTextSize,
               textColor: Colors.grey,
-              padding: EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(bottom: 5),
             ),
             CustomText(
               text: photoData.views.toString(),
               textColor: theme.textColor!,
-              fontSize: 14,
+              fontSize: smallTextSize,
             )
           ],
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomText(
+            CustomText(
               text: 'downloads',
-              fontSize: 12,
+              fontSize: headTextSize,
               textColor: Colors.grey,
-              padding: EdgeInsets.only(bottom: 5),
+              padding: const EdgeInsets.only(bottom: 5),
             ),
             CustomText(
               text: photoData.downloads.toString(),
               textColor: theme.textColor!,
-              fontSize: 14,
+              fontSize: smallTextSize,
             )
           ],
         ),

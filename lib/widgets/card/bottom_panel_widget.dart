@@ -21,6 +21,17 @@ class BottomPanelWidget extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double textSize;
+    double iconSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      textSize = 18;
+      iconSize = 22;
+    } else {
+      textSize = 12;
+      iconSize = 18;
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: theme.cardColor,
@@ -50,6 +61,8 @@ class BottomPanelWidget extends StatelessWidget {
                 'Created on ${DateFormat.yMMMd().format(DateTime.parse(data.createdDate!))}',
             textColor: theme.textColor!,
             icon: Icons.calendar_month,
+            textSize: textSize,
+            iconSize: iconSize,
           ),
           data.location!.title == 'No data'
               ? const SizedBox.shrink()
@@ -59,6 +72,8 @@ class BottomPanelWidget extends StatelessWidget {
                     text: '${data.location!.title}',
                     textColor: theme.textColor!,
                     icon: Icons.pin_drop,
+                    textSize: textSize,
+                    iconSize: iconSize,
                   ),
                 ]),
           data.location!.title == 'No data' || data.location!.latitude == null

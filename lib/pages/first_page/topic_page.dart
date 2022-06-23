@@ -20,6 +20,17 @@ class TopicPage extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double headTextSize;
+    double smallTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      headTextSize = 50;
+      smallTextSize = 20;
+    } else {
+      headTextSize = 30;
+      smallTextSize = 14;
+    }
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
@@ -47,7 +58,7 @@ class TopicPage extends StatelessWidget {
                 children: [
                   CustomText(
                     text: 'Topics',
-                    fontSize: 30,
+                    fontSize: headTextSize,
                     textColor: theme.textColor!,
                     alignment: Alignment.centerLeft,
                     padding:
@@ -56,7 +67,7 @@ class TopicPage extends StatelessWidget {
                   CustomText(
                     text:
                         'Explore the world through topics of beautiful photos free to use',
-                    fontSize: 15,
+                    fontSize: smallTextSize,
                     textColor: theme.textColor!,
                     padding: const EdgeInsets.only(left: 7, bottom: 17),
                     alignment: Alignment.centerLeft,

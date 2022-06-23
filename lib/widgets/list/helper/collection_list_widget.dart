@@ -54,12 +54,23 @@ class _CollectionListWidgetState extends State<CollectionListWidget> {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double headTextSize;
+    double smallTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      headTextSize = 50;
+      smallTextSize = 20;
+    } else {
+      headTextSize = 30;
+      smallTextSize = 14;
+    }
+
     return ListView(
       controller: _controller,
       children: [
         CustomText(
           text: 'Collections',
-          fontSize: 30,
+          fontSize: headTextSize,
           textColor: theme.textColor!,
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.only(left: 7, top: 10, bottom: 12),
@@ -67,7 +78,7 @@ class _CollectionListWidgetState extends State<CollectionListWidget> {
         CustomText(
           text:
               'Explore the world through collections of beautiful photos free to use',
-          fontSize: 15,
+          fontSize: smallTextSize,
           textColor: theme.textColor!,
           padding: const EdgeInsets.only(left: 7, bottom: 17),
           alignment: Alignment.centerLeft,

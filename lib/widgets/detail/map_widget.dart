@@ -31,8 +31,19 @@ class _MapWidgetState extends State<MapWidget> {
     LatLng location =
         LatLng(widget.location.latitude!, widget.location.longitude!);
 
+    double mapWidgetSize;
+    double iconSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      mapWidgetSize = 240;
+      iconSize = 35;
+    } else {
+      mapWidgetSize = 150;
+      iconSize = 18;
+    }
+
     return SizedBox(
-      height: 150,
+      height: mapWidgetSize,
       child: Stack(
         children: [
           FlutterMap(
@@ -79,6 +90,7 @@ class _MapWidgetState extends State<MapWidget> {
                   child: Icon(
                     Icons.add,
                     color: theme.textColor,
+                    size: iconSize,
                   ),
                   onTap: () {
                     setState(() {
@@ -92,6 +104,7 @@ class _MapWidgetState extends State<MapWidget> {
                   child: Icon(
                     Icons.remove,
                     color: theme.textColor,
+                    size: iconSize,
                   ),
                   onTap: () {
                     setState(() {

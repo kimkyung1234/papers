@@ -12,7 +12,7 @@ class CollectionGridListWidget extends StatelessWidget {
   final bool shrinkWrap;
   final ScrollPhysics? physics;
 
-  CollectionGridListWidget({
+  const CollectionGridListWidget({
     super.key,
     required this.dataList,
     required this.itemCount,
@@ -26,15 +26,29 @@ class CollectionGridListWidget extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double collectionCoverImageSize;
+    double mainAxisExtent;
+    double collectionTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      collectionCoverImageSize = 400;
+      mainAxisExtent = 470;
+      collectionTextSize = 20;
+    } else {
+      collectionCoverImageSize = 200;
+      mainAxisExtent = 250;
+      collectionTextSize = 14;
+    }
+
     return GridView.builder(
       shrinkWrap: shrinkWrap,
       controller: controller,
       physics: physics,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        mainAxisExtent: 250,
+        mainAxisExtent: mainAxisExtent,
       ),
       itemCount: itemCount,
       itemBuilder: (context, index) {
@@ -59,25 +73,25 @@ class CollectionGridListWidget extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  height: 200,
+                  height: collectionCoverImageSize,
                   width: double.infinity,
                   child: carryImageWidget(
                     url: data.coverPhoto!.urls!.regularUrl!,
                     boxFit: BoxFit.cover,
                     radius: 5,
-                    height: 150,
+                    height: collectionCoverImageSize,
                   ),
                 ),
                 CustomText(
                   text: data.title!,
-                  fontSize: 14,
+                  fontSize: collectionTextSize,
                   textColor: theme.textColor!,
                   padding: const EdgeInsets.only(left: 10, top: 5),
                   alignment: Alignment.centerLeft,
                 ),
                 CustomText(
                   text: '${data.totalPhotos} photos',
-                  fontSize: 14,
+                  fontSize: collectionTextSize,
                   textColor: Colors.grey,
                   padding: const EdgeInsets.only(left: 10, top: 5),
                   alignment: Alignment.centerLeft,

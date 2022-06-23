@@ -13,6 +13,14 @@ class SettingPage extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double headTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      headTextSize = 50;
+    } else {
+      headTextSize = 30;
+    }
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.only(left: 10, right: 10),
@@ -21,7 +29,7 @@ class SettingPage extends StatelessWidget {
           children: [
             CustomText(
               text: 'Settings',
-              fontSize: 30,
+              fontSize: headTextSize,
               textColor: theme.textColor!,
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 7, top: 10, bottom: 12),

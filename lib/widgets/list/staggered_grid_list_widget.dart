@@ -39,11 +39,19 @@ class StaggeredGridListWidget extends StatelessWidget {
     var theme = themeMode.getThemeData;
     bool isFilled = imageFit.getImageFit == 'Filled';
 
+    int crossAxisCount;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      crossAxisCount = 3;
+    } else {
+      crossAxisCount = 2;
+    }
+
     return MasonryGridView.count(
       physics: physics,
       shrinkWrap: shrinkWrap,
       controller: controller,
-      crossAxisCount: 2,
+      crossAxisCount: crossAxisCount,
       crossAxisSpacing: isFilled ? 0 : 10,
       mainAxisSpacing: isFilled ? 0 : 10,
       itemCount: itemCount,
@@ -53,12 +61,6 @@ class StaggeredGridListWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () async {
             if (tap == true) {
-              // photoDetailDialog(
-              //   context: context,
-              //   photoData: data,
-              //   tap: tapUser,
-              //   theme: theme,
-              // );
               Photo photoData = await photoApiHelper.getPhotoById(
                   context: context, id: data.id!);
 

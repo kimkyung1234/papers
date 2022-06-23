@@ -17,6 +17,20 @@ class RandomCardWidget extends StatelessWidget {
     var theme = themeMode.getThemeData;
     var provider = Provider.of<SettingProvider>(context);
 
+    double randomCardImageSize;
+    double profileImageSize;
+    double userNameTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      profileImageSize = 50;
+      userNameTextSize = 20;
+      randomCardImageSize = 700;
+    } else {
+      profileImageSize = 30;
+      userNameTextSize = 13;
+      randomCardImageSize = 480;
+    }
+
     return FutureBuilder<Photo>(
       future: photoApiHelper.getRandomPhoto(),
       builder: (_, snapshot) {
@@ -30,21 +44,14 @@ class RandomCardWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 35, 0, 0),
               child: SizedBox(
-                height: 480,
+                height: randomCardImageSize,
                 child: GestureDetector(
                   onTap: () async {
-                    // photoDetailDialog(
-                    //   context: context,
-                    //   photoData: data,
-                    //   theme: theme,
-                    // );
-
                     Photo photoData = await photoApiHelper.getPhotoById(
                         context: context, id: data.id!);
 
                     provider.setImageUrl(url: photoData.urls!.regularUrl!);
 
-                    // Navigator.pop(context);
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -58,7 +65,7 @@ class RandomCardWidget extends StatelessWidget {
                       carryImageWidget(
                         url: data.urls!.regularUrl ?? '',
                         boxFit: BoxFit.cover,
-                        height: 480,
+                        height: randomCardImageSize,
                         radius: 0,
                       ),
                     ],
@@ -71,8 +78,8 @@ class RandomCardWidget extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: UserInfoWidget(
                 userData: data.user!,
-                profileImageSize: 30,
-                userNameTextSize: 13,
+                profileImageSize: profileImageSize,
+                userNameTextSize: userNameTextSize,
               ),
             )
           ],

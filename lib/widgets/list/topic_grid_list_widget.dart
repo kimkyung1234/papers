@@ -26,15 +26,35 @@ class TopicGridListWidget extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double collectionCoverImageSize;
+    double mainAxisExtent;
+    double topicTextSize;
+    double profileImageSize;
+    double userNameTextSize;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      collectionCoverImageSize = 400;
+      mainAxisExtent = 510;
+      topicTextSize = 20;
+      profileImageSize = 30;
+      userNameTextSize = 17;
+    } else {
+      collectionCoverImageSize = 200;
+      mainAxisExtent = 290;
+      topicTextSize = 14;
+      profileImageSize = 20;
+      userNameTextSize = 12;
+    }
+
     return GridView.builder(
       shrinkWrap: shrinkWrap,
       controller: controller,
       physics: physics,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        mainAxisExtent: 290,
+        mainAxisExtent: mainAxisExtent,
       ),
       itemCount: itemCount,
       itemBuilder: (context, index) {
@@ -61,13 +81,13 @@ class TopicGridListWidget extends StatelessWidget {
                 Stack(
                   children: [
                     SizedBox(
-                      height: 200,
+                      height: collectionCoverImageSize,
                       width: double.infinity,
                       child: carryImageWidget(
                         url: data.coverPhoto!.urls!.regularUrl!,
                         boxFit: BoxFit.cover,
                         radius: 5,
-                        height: 150,
+                        height: collectionCoverImageSize,
                       ),
                     ),
                     Padding(
@@ -78,14 +98,14 @@ class TopicGridListWidget extends StatelessWidget {
                 ),
                 CustomText(
                   text: data.title!,
-                  fontSize: 14,
+                  fontSize: topicTextSize,
                   textColor: theme.textColor!,
                   padding: const EdgeInsets.only(left: 10, top: 5),
                   alignment: Alignment.centerLeft,
                 ),
                 CustomText(
                   text: '${data.totalPhotos} photos',
-                  fontSize: 14,
+                  fontSize: topicTextSize,
                   textColor: Colors.grey,
                   padding: const EdgeInsets.only(left: 10, top: 5, bottom: 14),
                   alignment: Alignment.centerLeft,
@@ -94,8 +114,8 @@ class TopicGridListWidget extends StatelessWidget {
                 UserInfoWidget(
                   userData: data.owner!,
                   leftPadding: 10,
-                  profileImageSize: 20,
-                  userNameTextSize: 12,
+                  profileImageSize: profileImageSize,
+                  userNameTextSize: userNameTextSize,
                 ),
               ],
             ),
