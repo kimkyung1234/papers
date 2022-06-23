@@ -26,11 +26,14 @@ class SettingProvider with ChangeNotifier {
   }
 
   String? _imageUrl;
+  String _type = 'medium';
 
   String? get getImageUrl => _imageUrl;
+  String get getType => _type;
 
-  void setImageUrl({required String url}) {
+  void setImageUrl({required String url, required String type}) {
     _imageUrl = url;
+    _type = type;
     notifyListeners();
   }
 

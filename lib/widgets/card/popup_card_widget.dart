@@ -23,9 +23,17 @@ class PopupMenu extends StatelessWidget {
       itemBuilder: (context) => [
         PopupMenuItem(
           value: 1,
-          child: Text(
-            'Cover',
-            style: TextStyle(color: theme.textColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Cover',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getBoxFit == BoxFit.cover
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
           ),
           onTap: () {
             provider.setBoxFit(boxFit: BoxFit.cover);
@@ -33,9 +41,17 @@ class PopupMenu extends StatelessWidget {
         ),
         PopupMenuItem(
           value: 2,
-          child: Text(
-            'FitWidth',
-            style: TextStyle(color: theme.textColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'FitWidth',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getBoxFit == BoxFit.fitWidth
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
           ),
           onTap: () {
             provider.setBoxFit(boxFit: BoxFit.fitWidth);

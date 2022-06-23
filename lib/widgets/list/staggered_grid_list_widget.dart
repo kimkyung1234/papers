@@ -64,7 +64,10 @@ class StaggeredGridListWidget extends StatelessWidget {
               Photo photoData = await photoApiHelper.getPhotoById(
                   context: context, id: data.id!);
 
-              provider.setImageUrl(url: photoData.urls!.regularUrl!);
+              provider.setImageUrl(
+                url: photoData.urls!.regularUrl!,
+                type: 'medium',
+              );
 
               Navigator.push(
                 context,

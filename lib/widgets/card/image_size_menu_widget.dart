@@ -24,42 +24,74 @@ class ImageSizeMenuWidget extends StatelessWidget {
       itemBuilder: (context) => [
         PopupMenuItem(
           value: 1,
-          child: Text(
-            'Small',
-            style: TextStyle(color: theme.textColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Small',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getType == 'small'
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
           ),
           onTap: () {
-            provider.setImageUrl(url: urls.smallUrl!);
+            provider.setImageUrl(url: urls.smallUrl!, type: 'small');
           },
         ),
         PopupMenuItem(
           value: 2,
-          child: Text(
-            'Medium',
-            style: TextStyle(color: theme.textColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Medium',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getType == 'medium'
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
           ),
           onTap: () {
-            provider.setImageUrl(url: urls.regularUrl!);
+            provider.setImageUrl(url: urls.regularUrl!, type: 'medium');
           },
         ),
         PopupMenuItem(
           value: 2,
-          child: Text(
-            'Large',
-            style: TextStyle(color: theme.textColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Large',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getType == 'large'
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
           ),
           onTap: () {
-            provider.setImageUrl(url: urls.rawUrl!);
+            provider.setImageUrl(url: urls.rawUrl!, type: 'large');
           },
         ),
         PopupMenuItem(
           value: 2,
-          child: Text(
-            'Original Size',
-            style: TextStyle(color: theme.textColor),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Original Size',
+                style: TextStyle(color: theme.textColor),
+              ),
+              provider.getType == 'original size'
+                  ? Icon(Icons.check, color: theme.textColor)
+                  : const SizedBox.shrink()
+            ],
           ),
           onTap: () {
-            provider.setImageUrl(url: urls.fullUrl!);
+            provider.setImageUrl(url: urls.fullUrl!, type: 'original size');
           },
         ),
       ],
