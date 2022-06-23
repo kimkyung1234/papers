@@ -18,6 +18,14 @@ class PhotoDetailPage extends StatelessWidget {
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
+    double slidingUpPanelHeight;
+
+    if (MediaQuery.of(context).size.width > 600) {
+      slidingUpPanelHeight = 800;
+    } else {
+      slidingUpPanelHeight = 500;
+    }
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: theme.backgroundColor,
@@ -53,6 +61,7 @@ class PhotoDetailPage extends StatelessWidget {
         ],
       ),
       body: SlidingUpPanel(
+        maxHeight: slidingUpPanelHeight,
         renderPanelSheet: false,
         panel: BottomPanelWidget(
           data: data,
