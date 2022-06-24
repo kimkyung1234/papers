@@ -26,7 +26,7 @@ class SearchPage extends StatelessWidget {
                 child: TextField(
                   cursorColor: Colors.grey,
                   textInputAction: TextInputAction.go,
-                  style: const TextStyle(color: Colors.grey),
+                  style: TextStyle(color: theme.textColor),
                   onSubmitted: (value) async {
                     provider.setText(value);
 

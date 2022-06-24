@@ -9,16 +9,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var imageFit = Provider.of<SettingProvider>(context);
+    var settingProvide = Provider.of<SettingProvider>(context);
     var themeMode = Provider.of<ThemeChangerProvider>(context);
     var theme = themeMode.getThemeData;
 
     double headTextSize;
+    bool isPad;
 
     if (MediaQuery.of(context).size.width > 600) {
       headTextSize = 50;
+      isPad = true;
     } else {
       headTextSize = 30;
+      isPad = false;
     }
 
     return SafeArea(
@@ -35,7 +38,7 @@ class SettingPage extends StatelessWidget {
               padding: const EdgeInsets.only(left: 7, top: 10, bottom: 12),
             ),
             _settingMenu(
-              text: 'Dark mode',
+              text: 'Dark Mode',
               hintText: themeMode.getThemeDark ? 'On' : 'Off',
               textColor: theme.textColor!,
               widget: CupertinoSwitch(
@@ -56,12 +59,25 @@ class SettingPage extends StatelessWidget {
               text: 'Image Fit',
               textColor: theme.textColor!,
               widget: TextButton(
-                child: Text(imageFit.getImageFit),
+                child: Text(settingProvide.getImageFit),
                 onPressed: () {
-                  _showPicker(context, imageFit, theme);
+                  _showPicker(context, settingProvide, theme);
                 },
               ),
             ),
+            isPad
+                ? _settingMenu(
+                    text: 'Cross Axis Count',
+                    textColor: theme.textColor!,
+                    widget: TextButton(
+                      child: Text(settingProvide.getCrossAxisCount.toString()),
+                      onPressed: () {
+                        _showCrossAxisCountPicker(
+                            context, settingProvide, theme);
+                      },
+                    ),
+                  )
+                : const SizedBox.shrink()
           ],
         ),
       ),
@@ -132,6 +148,39 @@ void _showPicker(
               await SharedPreferences.getInstance();
 
           sharedPreferences.setString('fit', value == 0 ? 'Filled' : 'Padding');
+        },
+      ),
+    ),
+  );
+}
+
+void _showCrossAxisCountPicker(
+  BuildContext context,
+  SettingProvider settingProvide,
+  ColorTheme theme,
+) {
+  showCupertinoModalPopup(
+    context: context,
+    builder: (_) => SizedBox(
+      height: 250,
+      child: CupertinoPicker(
+        backgroundColor: theme.backgroundColor,
+        itemExtent: 30,
+        scrollController: FixedExtentScrollController(
+            initialItem: settingProvide.getCrossAxisCount - 2),
+        children: [
+          Text('2', style: TextStyle(color: theme.textColor)),
+          Text('3', style: TextStyle(color: theme.textColor)),
+        ],
+        onSelectedItemChanged: (value) async {
+          // ignore: avoid_print
+          print(value);
+          settingProvide.setCrossAxisCount(value + 2);
+
+          SharedPreferences sharedPreferences =
+              await SharedPreferences.getInstance();
+
+          sharedPreferences.setInt('crossAxisCount', value + 2);
         },
       ),
     ),

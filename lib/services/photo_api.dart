@@ -23,7 +23,7 @@ class PhotoApiHelper {
   Future<PhotosList> getRandomPhotos({required int page}) async {
     final response = await get(
       Uri.parse(
-          'https://api.unsplash.com/photos/random?client_id=${ApiKey.apiKey}&count=10&page=$page'),
+          'https://api.unsplash.com/photos/random?client_id=${ApiKey.apiKey}&count=15&page=$page'),
     );
 
     if (response.statusCode == 200) {
@@ -37,7 +37,7 @@ class PhotoApiHelper {
       {required String userName, required int page}) async {
     final response = await get(
       Uri.parse(
-          'https://api.unsplash.com/users/$userName/photos?client_id=${ApiKey.apiKey}&count=6&page=$page'),
+          'https://api.unsplash.com/users/$userName/photos?client_id=${ApiKey.apiKey}&count=15&page=$page'),
     );
 
     if (response.statusCode == 200) {
@@ -51,7 +51,7 @@ class PhotoApiHelper {
       {required String userName, required int page}) async {
     final response = await get(
       Uri.parse(
-          'https://api.unsplash.com/users/$userName/likes?client_id=${ApiKey.apiKey}&count=6&page=$page'),
+          'https://api.unsplash.com/users/$userName/likes?client_id=${ApiKey.apiKey}&count=15&page=$page'),
     );
 
     if (response.statusCode == 200) {

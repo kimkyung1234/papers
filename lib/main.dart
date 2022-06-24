@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
 
     themeMode.theme();
     setting.fit();
+    setting.crossAxisCount();
 
     return MaterialApp(
       theme: ThemeData(

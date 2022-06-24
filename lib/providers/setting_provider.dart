@@ -25,6 +25,8 @@ class SettingProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // about image url type
+
   String? _imageUrl;
   String _type = 'medium';
 
@@ -40,5 +42,21 @@ class SettingProvider with ChangeNotifier {
   void reset() {
     _boxFit = BoxFit.fitWidth;
     _imageUrl = null;
+  }
+
+  // about cross axis count
+
+  int _crossAxisCount = 3;
+
+  int get getCrossAxisCount => _crossAxisCount;
+
+  void setCrossAxisCount(int crossAxisCount) {
+    _crossAxisCount = crossAxisCount;
+    notifyListeners();
+  }
+
+  Future<void> crossAxisCount() async {
+    final prefs = await SharedPreferences.getInstance();
+    _crossAxisCount = prefs.getInt('crossAxisCount') ?? 3;
   }
 }

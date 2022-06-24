@@ -42,7 +42,7 @@ class StaggeredGridListWidget extends StatelessWidget {
     int crossAxisCount;
 
     if (MediaQuery.of(context).size.width > 600) {
-      crossAxisCount = 3;
+      crossAxisCount = provider.getCrossAxisCount;
     } else {
       crossAxisCount = 2;
     }
