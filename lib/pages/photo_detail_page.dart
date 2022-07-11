@@ -71,11 +71,15 @@ class PhotoDetailPage extends StatelessWidget {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            carryImageWidget(
-              url: provider.getImageUrl!,
-              boxFit: provider.getBoxFit,
-              height: 480,
-              radius: 0,
+            InteractiveViewer(
+              minScale: 0.1,
+              maxScale: 3,
+              child: carryImageWidget(
+                url: provider.getImageUrl!,
+                boxFit: provider.getBoxFit,
+                height: 480,
+                radius: 0,
+              ),
             ),
           ],
         ),
