@@ -1,5 +1,5 @@
-export 'collectiond_page/collection_detail_page.dart';
-export 'collectiond_page/collection_page.dart';
+export 'collection_page/collection_detail_page.dart';
+export 'collection_page/collection_page.dart';
 export 'first_page/first_page.dart';
 export 'first_page/ramdom_page.dart';
 export 'first_page/topic_detail_page.dart';
